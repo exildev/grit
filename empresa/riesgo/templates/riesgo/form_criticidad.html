@@ -1,0 +1,18 @@
+{% block contenido %}
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_criticidad' form.instance.pk %}{% else %}{%url 'crear_criticidad' %}{% endif %}">
+	{% csrf_token %}
+	<ul>
+		<li>
+			<label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+		    {{ form.nombre }}
+		    {{ form.nombre.errors }}
+		</li>
+		<li>
+			<label for="{{ form.descripcion.id_for_label }}">Descripcion:</label>
+		    {{ form.descripcion }}
+		    {{ form.descripcion.errors }}
+		</li>
+	</ul>
+	{% include 'empresa/submit.html' with editar=form.instance.pk %}
+</form>
+{% endblock %}

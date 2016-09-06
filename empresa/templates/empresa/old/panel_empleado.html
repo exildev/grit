@@ -1,0 +1,45 @@
+{% extends 'empresa/index.html' %}
+{% load filters %}
+{% block lateral %}
+	{% include 'empresa/panel_empresa.html' with empresas=''|panel_empresas %}
+{% endblock %}
+{% block miga %}
+	{% include 'empresa/miga_pan.html' with miga='cargo' cargo=cargo %}
+{% endblock %}
+{% block herramientas %}
+<a href="{% url 'form_crear_empleado' cargo.pk %}">Crear empleado</a>
+{% endblock %}
+{% block contenido %}
+<table>
+	<tr>
+		<th>
+			Código
+		</th>
+		<th>
+			Nombre
+		</th>
+		<th>
+			Cargo
+		</th>
+		<th>
+			
+		</th>
+	</tr>
+	{% for empleado in empleados %}
+	<tr>
+		<td>
+			{{empleado.codigo}}
+		</td>
+		<td>
+			<a href="{% url 'mostrar_empleado' empleado.pk %}">{{empleado}}</a>
+		</td>
+		<td>
+			<a href="{% url 'mostrar_cargo' empleado.cargo.pk %}">{{empleado.cargo}}</a>
+		</td>
+		<td>
+			<a href="{% url 'form_editar_empleado' empleado.pk %}">editar</a>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

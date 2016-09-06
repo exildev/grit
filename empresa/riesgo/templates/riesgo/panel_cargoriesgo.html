@@ -1,0 +1,14 @@
+<ul>
+	{% for cargoriesgo in cargoriesgos %}
+	<li>
+		<a href="{% url 'mostrar_cargoriesgo' cargoriesgo.id %}">{{cargoriesgo}}</a>
+		<a href="{% url 'form_editar_cargoriesgo' cargoriesgo.pk %}">e</a>
+	</li>
+	{% endfor %}
+	<li>-----------------</li>
+	{% for cargo in cargos %}
+	<li>
+		<a href="{% url 'form_crear_cargoriesgo' cargo.pk %}">Crear riesgo para el cargo {{cargo}}</a>
+	</li>
+	{% endfor %}
+</ul>

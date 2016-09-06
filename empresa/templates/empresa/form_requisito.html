@@ -1,0 +1,22 @@
+
+<form id="formRequisito" enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_requisito' cargo.pk %}{% else %}{%url 'crear_requisito' cargo.pk %}{% endif %}">
+	{% csrf_token %}
+	<ul>
+		<li>
+            <paper-textarea name="educacion" label="Educacion:">{{form.educacion.value}}</paper-textarea>
+		    {{ form.educacion.errors }}
+		</li>
+		<li>
+		    <paper-textarea name="formacion" label="Formacion:">{{form.formacion.value}}</paper-textarea>
+		    {{ form.formacion.errors }}
+		</li>
+		<li>
+		    <paper-textarea name="habilidades" label="Habilidades:">{{form.habilidades.value}}</paper-textarea>
+		    {{ form.habilidades.errors }}
+		</li>
+		<li>
+		    <paper-textarea name="experiencia" label="Experiencia:">{{form.experiencia.value}}</paper-textarea>
+		    {{ form.experiencia.errors }}
+		</li>
+	</ul>
+</form>

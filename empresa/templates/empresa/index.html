@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-Co">
+<head>
+    <meta charset="utf-8">
+    <title>{{empresa}}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="black">
+    <link rel="icon" href="icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png"-->
+    <script src="{% static 'huella/bower_components/webcomponentsjs/webcomponents-lite.min.js'%}"></script>
+    <link rel="import" href="{% static 'huella/lib.html'%}">
+    <link rel="import" href="{% static 'huella/css/app.html'%}">
+</head>
+
+<body unresolved>
+    <paper-drawer-panel>
+        <div drawer>
+            <paper-toolbar id="menu">
+                <div class="title">[Menú]</div>
+            </paper-toolbar>
+            <paper-menu>
+              <paper-item>[Item 1]</paper-item>
+              <paper-item>[Item 2]</paper-item>
+              <paper-item>[Item 3]</paper-item>
+              <paper-item>[Item 4]</paper-item>
+            </paper-menu>
+        </div>
+        <div main>
+            <paper-header-panel mode="waterfall">
+                <paper-toolbar>
+                    <div class="title">{{empresa}}</div>
+                    <paper-icon-button icon="settings" onclick="location.href='/admin/';"></paper-icon-button>
+                </paper-toolbar>
+                <section>    
+                        {% include 'empresa/mapas_proceso.html' with departamentos=departamentos %}
+                </section>
+            </paper-header-panel>
+            
+        </div>
+    </paper-drawer-panel>
+    
+</body>
+
+</html>

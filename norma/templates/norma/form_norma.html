@@ -1,0 +1,33 @@
+{% block contenido %}
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_norma' form.instance.pk %}{% else %}{%url 'crear_norma' %}{% endif %}">
+	{% csrf_token %}
+	<ul>
+		<li>
+			<label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+		    {{ form.nombre }}
+		    {{ form.nombre.errors }}
+		</li>
+		<li>
+			<label for="{{ form.edicion.id_for_label }}">Edicion:</label>
+		    {{ form.edicion }}
+		    {{ form.edicion.errors }}
+		</li>
+		<li>
+			<label for="{{ form.fecha_edicion.id_for_label }}">Fecha_edicion:</label>
+		    {{ form.fecha_edicion }}
+		    {{ form.fecha_edicion.errors }}
+		</li>
+		<li>
+			<label for="{{ form.descripcion.id_for_label }}">Descripcion:</label>
+		    {{ form.descripcion }}
+		    {{ form.descripcion.errors }}
+		</li>
+		<li>
+			<label for="{{ form.referencia.id_for_label }}">Referencia:</label>
+		    {{ form.referencia }}
+		    {{ form.referencia.errors }}
+		</li>
+	</ul>
+	{% include 'empresa/submit.html' with editar=form.instance.pk %}
+</form>
+{% endblock %}

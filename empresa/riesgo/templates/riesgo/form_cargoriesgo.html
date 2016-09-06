@@ -1,0 +1,56 @@
+{% block contenido %}
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_cargoriesgo' form.instance.pk %}{% else %}{%url 'crear_cargoriesgo' %}{% endif %}">
+	{% csrf_token %}
+	<input type="hidden" name="cargo" value="{% if form.instance.pk %}{{form.instance.cargo.pk}}{% else %}{{cargo.id}}{% endif %}">
+	<ul>
+		<li>
+			<label for="{{ form.acceso.id_for_label }}">Acceso:</label>
+		    {{ form.acceso }}
+		    {{ form.acceso.errors }}
+		</li>
+		<li>
+			<label for="{{ form.impacto.id_for_label }}">Impacto:</label>
+		    {{ form.impacto }}
+		    {{ form.impacto.errors }}
+		</li>
+		<li>
+			<label for="{{ form.contacto_aproteger.id_for_label }}">Contacto_aproteger:</label>
+		    {{ form.contacto_aproteger }}
+		    {{ form.contacto_aproteger.errors }}
+		</li>
+		<li>
+			<label for="{{ form.manejo_programas.id_for_label }}">Manejo_programas:</label>
+		    {{ form.manejo_programas }}
+		    {{ form.manejo_programas.errors }}
+		</li>
+		<li>
+			<label for="{{ form.incidencia_medidas.id_for_label }}">Incidencia_medidas:</label>
+		    {{ form.incidencia_medidas }}
+		    {{ form.incidencia_medidas.errors }}
+		</li>
+		<li>
+			<label for="{{ form.ponderacion.id_for_label }}">Ponderacion:</label>
+		    {{ form.ponderacion }}
+		    {{ form.ponderacion.errors }}
+		</li>
+		<li>
+			<label for="{{ form.calificacion.id_for_label }}">Calificacion:</label>
+		    {{ form.calificacion }}
+		    {{ form.calificacion.errors }}
+		</li>
+		<li>
+			<label for="{{ form.criticidad.id_for_label }}">Criticidad:</label>
+		    {{ form.criticidad }}
+		    {{ form.criticidad.errors }}
+		</li>
+		<li>
+			<label for="{{ form.aproteger.id_for_label }}">Aproteger:</label>
+		    {{ form.aproteger }}
+		    {{ form.aproteger.errors }}
+		</li>
+
+
+	</ul>
+	{% include 'empresa/submit.html' with editar=form.instance.pk %}
+</form>
+{% endblock %}

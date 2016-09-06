@@ -1,0 +1,27 @@
+{% block contenido %}
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_riesgo' form.instance.pk %}{% else %}{%url 'crear_riesgo' %}{% endif %}">
+	{% csrf_token %}
+	{% if form.instance.pk %}
+	<input type="hidden" name="requisito" value="{{form.instance.requisito.pk}}">
+	{% endif %}
+	<ul>
+		<li>
+			<label for="{{ form.amenaza.id_for_label }}">Amenaza:</label>
+		    {{ form.amenaza }}
+		    {{ form.amenaza.errors }}
+		</li>
+		<li>
+			<label for="{{ form.riesgo.id_for_label }}">Riesgo:</label>
+		    {{ form.riesgo }}
+		    {{ form.riesgo.errors }}
+		</li>
+		<li>
+			<label for="{{ form.aproteger.id_for_label }}">Aproteger:</label>
+		    {{ form.aproteger }}
+		    {{ form.aproteger.errors }}
+		</li>
+		
+	</ul>
+	{% include 'empresa/submit.html' with editar=form.instance.pk %}
+</form>
+{% endblock %}

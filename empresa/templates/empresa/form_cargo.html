@@ -1,0 +1,22 @@
+
+<form id="formCargo" enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_cargo' form.instance.pk %}{% else %}{%url 'crear_cargo' %}{% endif %}">
+	{% csrf_token %}
+	{% if form.instance.pk %}
+	<input type="hidden" name="requisito" value="{{form.instance.requisito.pk}}">
+	{% endif %}
+	<input type="hidden" name="departamento" value="{% if form.instance.pk %}{{form.instance.departamento.pk}}{% else %}{{departamento.id}}{% endif %}">
+	<ul>
+		<li>
+		    <paper-input label="Nombre:" value="{{form.nombre.value}}"  name="nombre" type="text"></paper-input>
+		    {{ form.nombre.errors }}
+		</li>
+		<li>
+		    <paper-input label="Descripcion:" name="descripcion" value="{{form.descripcion.value}}" type="text"></paper-input>
+		    {{ form.descripcion.errors }}
+		</li>
+		<li>
+			{{ form.recordatorios }}
+		    {{ form.recordatorios.errors }}
+		</li>
+	</ul>
+</form>

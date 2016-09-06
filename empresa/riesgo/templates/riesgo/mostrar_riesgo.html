@@ -1,0 +1,20 @@
+{% block contenido %}
+	<ul class="mostrar">
+		<li>
+			<label for="amenaza">Amenaza:</label>
+			<label>{{riesgo.amenaza}}</label>
+		</li>
+		<li>
+			<label for="riesgo">Riesgo:</label>
+			<label>{{riesgo.riesgo}}</label>
+		</li>
+		<li>
+			<label for="aproteger">Aproteger:</label>
+			{% for aproteger in riesgo.aproteger.all %}
+			<label>{{aproteger}}</label>
+			{% endfor %}
+		</li>
+	</ul>
+	<a href="{% url 'form_editar_riesgo' riesgo.pk %}">Editar</a>
+	<a href="{% url 'panel_riesgo' %}">Panel riesgos</a>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+<html>
+	<head>
+		<title>Huellagestion</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'huella/css/jquery-ui.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'empresa/css/index.css' %}">
+		<script type="text/javascript" src="{% static "huella/js/jquery.min.js" %}"></script>
+		<script type="text/javascript" src="{% static "huella/js/jquery.form.min.js" %}"></script>
+		<script type="text/javascript" src="{% static "huella/js/jquery-ui.js" %}"></script>
+		{% block header %}{% endblock %}
+	</head>
+	<body>
+		<header>
+			<h1>Huellagestion</h1>
+			{% block titulo%}{% endblock %}
+		</header>
+		<nav>
+			{% block miga %}{% endblock %}
+		</nav>
+		<section>
+			<aside>
+				{% block lateral%}{% endblock %}
+			</aside>
+			<article>
+				<div>
+					{% block herramientas %}{% endblock %}
+				</div>
+				<div>
+					{% block contenido %}{% endblock %}
+				</div>
+			</article>
+		</section>
+	</body>
+</html>

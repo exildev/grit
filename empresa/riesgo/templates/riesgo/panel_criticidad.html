@@ -1,0 +1,11 @@
+<ul>
+	{% for criticidad in criticidads %}
+	<li>
+		<a href="{% url 'mostrar_criticidad' criticidad.id %}">{{criticidad}}</a>
+		<a href="{% url 'form_editar_criticidad' criticidad.pk %}">e</a>
+	</li>
+	{% endfor %}
+	<li>
+		<a href="{% url 'form_crear_criticidad' %}">Crear un criticidad</a>
+	</li>
+</ul>

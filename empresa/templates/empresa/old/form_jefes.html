@@ -1,0 +1,16 @@
+<form method="post" action="{% if form.instance.pk %}{% url 'editar_jefes' departamento.pk %}{% else %}{% url 'crear_jefes' %}{% endif %}">
+	{% csrf_token %}
+	<input type="hidden" name="departamento" value="{% if form.instance.pk %}{{form.instance.departamento.pk}}{% else %}{{departamento.pk}}{% endif %}">
+	{% if form.instance.pk %}
+		<label>Jefe actual:</label>
+		<label>{{form.instance.empleado}}</label>
+	{% endif %}
+	<ul>
+		<li>
+			<label for="{{ form.empleado.id_for_label }}">Empleado:</label>
+		    {{ form.empleado }}
+		    {{ form.empleado.errors }}
+		</li>
+	</ul>
+	<button>Cambiar</button>
+</form>

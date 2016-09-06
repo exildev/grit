@@ -1,0 +1,11 @@
+<ul>
+	{% for elementoproteger in elementoprotegers %}
+	<li>
+		<a href="{% url 'mostrar_elementoproteger' elementoproteger.id %}">{{elementoproteger}}</a>
+		<a href="{% url 'form_editar_elementoproteger' elementoproteger.pk %}">e</a>
+	</li>
+	{% endfor %}
+	<li>
+		<a href="{% url 'form_crear_elementoproteger' %}">Crear un elementoproteger</a>
+	</li>
+</ul>

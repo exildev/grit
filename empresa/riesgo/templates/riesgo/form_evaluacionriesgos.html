@@ -1,0 +1,192 @@
+{% load static %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{% static 'riesgo/css/riesgo.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'huella/css/jquery-ui.css' %}">
+
+<script type="text/javascript" src="{% static 'huella/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'huella/js/jquery-ui.js' %}"></script>
+<script type="text/javascript" src="{% static 'riesgo/js/riesgo.js' %}"></script>
+{% endblock %}
+{% block contenido %}
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_evaluacionriesgos' form.instance.pk %}{% else %}{%url 'crear_evaluacionriesgos' %}{% endif %}">
+	{% csrf_token %}
+	{{ formset.management_form }}
+	<input type="hidden" name="empresa" value="{{ empresa.pk }}">
+	<table class="matriz-riesgo" border="2">
+		<thead>
+			<tr class="default">
+				<th rowspan="2">
+					<label>Riesgo</label>
+				</th>
+				<th rowspan="2">
+					<label>Fuente</label>
+				</th>
+				<th rowspan="2">
+					<label>Medio</label>
+				</th>
+				<th rowspan="2">
+					<label>Persona</label>
+				</th>
+				<th rowspan="2">
+					<label>Metodo</label>
+				</th>
+				<th rowspan="2">
+					<label>probabilidad</label>
+				</th>
+				<th rowspan="2">
+					<label>consecuencia</label>
+				</th>
+				<th rowspan="2">
+					<label>estimacion</label>
+				</th>
+				<th colspan="4">Controles</th>
+			</tr>
+			<tr>
+				<th>
+					<label>administrativos</label>
+				</th>
+				<th>
+					<label>operacionales</label>
+				</th>
+				<th>
+					<label>talento humano</label>
+				</th>
+				<th>
+					<label>instalacion</label>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for form in formset %}
+			<tr>
+				<td>
+					{% for riesgo in riesgos %}
+						{% if form.riesgo.value|safe == riesgo.pk|safe %}
+						<label>{{ riesgo }}</label>
+						{% endif %}
+					{% endfor %}
+					{{ form.riesgo }}
+				    {{ form.riesgo.errors }}
+				</td>
+				<td>
+				    {{ form.fuente.errors }}
+					<label for="{{ form.fuente.id_for_label }}">
+						{% if form.fuente.value %}
+							{{ form.fuente.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.fuente }}
+					</div>
+				</td>
+				<td>
+				    {{ form.medio.errors }}
+					<label for="{{ form.medio.id_for_label }}">
+						{% if form.medio.value %}
+							{{ form.medio.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.medio }}
+					</div>
+				</td>
+				<td>
+				    {{ form.persona.errors }}
+					<label for="{{ form.persona.id_for_label }}">
+						{% if form.persona.value %}
+							{{ form.persona.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.persona }}
+					</div>
+				</td>
+				<td>
+				    {{ form.metodo.errors }}
+					<label for="{{ form.metodo.id_for_label }}">
+						{% if form.metodo.value %}
+							{{ form.metodo.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.metodo }}
+					</div>
+				</td>
+				<td>
+				    {{ form.probabilidad.errors }}
+				    {{ form.probabilidad }}
+				</td>
+				<td>
+				    {{ form.consecuencia.errors }}
+				    {{ form.consecuencia }}
+				</td>
+				<td>
+				    <p class="estimacion"></p>
+				</td>
+				<td>
+				    {{ form.controles_administrativos.errors }}
+					<label for="{{ form.controles_administrativos.id_for_label }}">
+						{% if form.controles_administrativos.value %}
+							{{ form.controles_administrativos.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.controles_administrativos }}
+					</div>
+				</td>
+				<td>
+				    {{ form.controles_operacionales.errors }}
+					<label for="{{ form.controles_operacionales.id_for_label }}">
+						{% if form.controles_operacionales.value %}
+							{{ form.controles_operacionales.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.controles_operacionales }}
+					</div>
+				</td>
+				<td>
+				    {{ form.controles_talentoHumano.errors }}
+					<label for="{{ form.controles_talentoHumano.id_for_label }}">
+						{% if form.controles_talentoHumano.value %}
+							{{ form.controles_talentoHumano.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.controles_talentoHumano }}
+					</div>
+				</td>
+				<td>
+				    {{ form.controles_instalacion.errors }}
+					<label for="{{ form.controles_instalacion.id_for_label }}">
+						{% if form.controles_instalacion.value %}
+							{{ form.controles_instalacion.value }}
+						{% else %}
+							Ingrese texto
+						{% endif %}
+					</label>
+					<div>
+						{{ form.controles_instalacion }}
+					</div>
+				</td>
+			</tr>
+		</tbody>
+		{% endfor %}
+	</table>
+	<input type="submit" name="save" value="Guardar">
+</form>
+{% endblock %}

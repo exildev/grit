@@ -1,0 +1,48 @@
+{% block contenido %}
+	<ul class="mostrar">
+		<li>
+			<label for="acceso">Acceso:</label>
+			<label>{{cargoriesgo.acceso}}</label>
+		</li>
+		<li>
+			<label for="impacto">Impacto:</label>
+			<label>{{cargoriesgo.impacto}}</label>
+		</li>
+		<li>
+			<label for="contacto_aproteger">Contacto_aproteger:</label>
+			<label>{{cargoriesgo.contacto_aproteger}}</label>
+		</li>
+		<li>
+			<label for="manejo_programas">Manejo_programas:</label>
+			<label>{{cargoriesgo.manejo_programas}}</label>
+		</li>
+		<li>
+			<label for="incidencia_medidas">Incidencia_medidas:</label>
+			<label>{{cargoriesgo.incidencia_medidas}}</label>
+		</li>
+		<li>
+			<label for="ponderacion">Ponderacion:</label>
+			<label>{{cargoriesgo.ponderacion}}</label>
+		</li>
+		<li>
+			<label for="calificacion">Calificacion:</label>
+			<label>{{cargoriesgo.calificacion}}</label>
+		</li>
+		<li>
+			<label for="cargo">Cargo:</label>
+			<label>{{cargoriesgo.cargo}}</label>
+		</li>
+		<li>
+			<label for="criticidad">Criticidad:</label>
+			<label>{{cargoriesgo.criticidad}}</label>
+		</li>
+		<li>
+			<label for="aproteger">Aproteger:</label>
+			{%for aproteger in cargoriesgo.aproteger.all %}
+			<label>{{aproteger}}</label>
+			{% endfor %}
+		</li>
+	</ul>{{cargoriesgo}}
+	<a href="{% url 'form_editar_cargoriesgo' cargoriesgo.pk %}">Editar</a>
+	<a href="{% url 'panel_cargoriesgo' %}">Panel cargoriesgos</a>
+{% endblock %}

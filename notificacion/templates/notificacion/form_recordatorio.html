@@ -1,0 +1,7 @@
+{% block contenido %}
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_recordatorio' form.instance.pk %}{% else %}{%url 'crear_recordatorio' notificable.pk %}{% endif %}">
+	{% csrf_token %}
+	{{form.as_ul}}
+	<input type="submit" value="crear">
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% if   miga = 'inicio' %}
+	<a href="{% url 'inicio' %}">Inicio</a>
+{% elif miga = 'empresa' %}
+	{% include 'empresa/miga_pan.html' with miga='inicio' %}
+	>
+	<a href="{% url 'mostrar_empresa' empresa.pk %}">{{empresa}}</a>
+{% elif miga = 'departamento' %}
+	{% include 'empresa/miga_pan.html' with miga='empresa' empresa=departamento.empresa %}
+	>
+	<a href="{% url 'mostrar_departamento' departamento.pk %}">{{departamento}}</a>
+{% elif miga = 'cargo' %}
+	{% include 'empresa/miga_pan.html' with miga='departamento' departamento=cargo.departamento %}
+	>
+	<a href="{% url 'mostrar_cargo' cargo.pk %}">{{cargo}}</a>
+{% elif miga = 'empleado' %}
+	{% include 'empresa/miga_pan.html' with miga='cargo' cargo=emleado.cargo %}
+	>
+	<a href="{% url 'mostrar_cargo' empleado.pk %}">{{emleado}}</a>
+{% endif %}

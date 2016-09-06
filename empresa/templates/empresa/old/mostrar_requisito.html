@@ -1,0 +1,24 @@
+{% if requisito %}
+<p>Requisitos para el cargo:</p>
+	<ul class="mostrar">
+		<li>
+			<label>Educacion: </label>
+			<label>{{requisito.educacion}}</label>
+		</li>
+		<li>
+			<label>Formacion: </label>
+			<label>{{requisito.formacion}}</label>
+		</li>
+		<li>
+			<label>Habilidades: </label>
+			<label>{{requisito.habilidades}}</label>
+		</li>
+		<li>
+			<label>Experiencia: </label>
+			<label>{{requisito.experiencia}}</label>
+		</li>
+	</ul>
+{% else %}
+<label>Este cargo aún no tiene requisitos</label> 
+<a href="{% url 'form_editar_cargo' cargo.pk %}#crear_requisito">Cambiar esto</a>
+{% endif %}

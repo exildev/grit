@@ -1,0 +1,41 @@
+{% extends 'empresa/index.html' %}
+{% load filters %}
+{% block miga %}
+	{% include 'empresa/miga_pan.html' with miga='inicio' %}
+{% endblock %}
+{% block lateral %}
+	{% include 'empresa/panel_empresa.html' with empresas=''|panel_empresas %}
+{% endblock %}
+{% block contenido %}
+	<div>
+		<img src="{%if empresa.logo %}{{empresa.logo.url}}{%endif %}" width="100">
+	</div>
+	<ul class="mostrar">
+		<li>
+			<label for="codigo">Codigo:</label>
+			<label>{{empresa.codigo}}</label>
+		</li>
+		<li>
+			<label for="ident">Ident:</label>
+			<label>{{empresa.ident}}</label>
+		</li>
+		<li>
+			<label for="telefono">Telefono:</label>
+			<label>{{empresa.telefono}}</label>
+		</li>
+		<li>
+			<label for="ciudad">Ciudad:</label>
+			<label>{{empresa.ciudad}}</label>
+		</li>
+		<li>
+			<label for="email">Email:</label>
+			<label>{{empresa.email}}</label>
+		</li>
+		<li>
+			<label for="direccion">Direccion:</label>
+			<label>{{empresa.direccion}}</label>
+		</li>
+	</ul>
+	<a href="{% url 'form_editar_empresa' empresa.pk %}">Editar</a>
+	<a href="{% url 'panel_departamento' empresa.pk %}">Panel departamentos</a>
+{% endblock %}

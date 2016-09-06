@@ -1,0 +1,35 @@
+{% extends 'empresa/index.html' %}
+{% load filters %}
+{% block miga %}
+	{% include 'empresa/miga_pan.html' with miga='empresa' empresa=departamento.empresa %}
+{% endblock %}
+{% block lateral %}
+	{% include 'empresa/panel_empresa.html' with empresas=''|panel_empresas %}
+{% endblock %}
+{% block contenido %}
+{% if jefes %}
+	<label>Jefe actual:</label>
+	<label>{{jefes.empleado}}</label>
+{% else %}
+	{% if departamento %}
+	<label>Este departamento no tiene ningun jefe.</label>
+	<a href="{% url 'form_editar_departamento' departamento.pk %}#cambiar_jefe">Cambiar esto</a>
+	{% endif %}
+{% endif %}
+<ul class="mostrar">
+	<li>
+		<label for="codigo">Nombre: </label>
+		<label> {{departamento.nombre}}</label>
+	</li>
+	<li>
+		<label for="codigo">Codigo: </label>
+		<label> {{departamento.codigo}}</label>
+	</li>
+	<li>
+		<label for="nivel">Nivel: </label>
+		<label> {{departamento.nivel}}</label>
+	</li>
+</ul>
+<a href="{% url 'form_editar_departamento' departamento.pk %}">Editar</a>
+<a href="{% url 'panel_cargo' departamento.pk %}">Panel de cargos</a>
+{% endblock %}

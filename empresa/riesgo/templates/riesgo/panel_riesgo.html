@@ -1,0 +1,11 @@
+<ul>
+	{% for riesgo in riesgos %}
+	<li>
+		<a href="{% url 'mostrar_riesgo' riesgo.id %}">{{riesgo}}</a>
+		<a href="{% url 'form_editar_riesgo' riesgo.pk %}">e</a>
+	</li>
+	{% endfor %}
+	<li>
+		<a href="{% url 'form_crear_riesgo' %}">Crear un riesgo</a>
+	</li>
+</ul>

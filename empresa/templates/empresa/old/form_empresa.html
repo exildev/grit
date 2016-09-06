@@ -1,0 +1,47 @@
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_empresa' form.instance.pk %}{% else %}{%url 'crear_empresa' %}{% endif %}">
+	{% csrf_token %}
+	{% if form.instance.pk %}
+	<div><img src="{% if form.instance.logo %}{{form.instance.logo.url}}{% endif %}" width="100"></div>
+	{% endif %}
+	<paper-input label="{% if form.instance.pk %}Cambiar logo{% else %}Subir un logo{% endif %}:" value="{{form.logo.value}}"  name="logo" type="file"></paper-input>
+	<input id="logo" name="logo" value="{{form.logo.value}}" type="file">
+	{{ form.logo.errors }}
+	<ul>
+		<li>
+		    <label for="{{ form.codigo.id_for_label }}">Codigo:</label>
+		    <paper-input label="Codigo:" value="{{form.codigo.value}}"  name="codigo" type="text"></paper-input>
+		    {{form.codigo.errors}}
+		</li>
+		<li>
+			<label for="{{ form.razons.id_for_label}}">Razons:</label>
+			{{ form.razons }}
+			{{ form.razons.errors }}
+		</li>
+		<li>
+			<label for="{{ form.ident.id_for_label}}">Ident:</label>
+			{{ form.ident }}
+			{{ form.ident.errors }}
+		</li>
+		<li>
+			<label for="{{ form.telefono.id_for_label}}">Telefono:</label>
+			{{ form.telefono }}
+			{{ form.telefono.errors }}
+		</li>
+		<li>
+			<label for="{{ form.ciudad.id_for_label}}">Ciudad:</label>
+			{{ form.ciudad }}
+			{{ form.ciudad.errors }}
+		</li>
+		<li>
+			<label for="{{ form.email.id_for_label}}">Email:</label>
+			{{ form.email }}
+			{{ form.email.errors }}
+		</li>
+		<li>
+			<label for="{{ form.direccion.id_for_label}}">Direccion:</label>
+			{{ form.direccion.errors }}
+			{{ form.direccion }}
+		</li>
+	</ul>
+	{% include 'empresa/submit.html' with editar=form.instance.pk %}
+</form>

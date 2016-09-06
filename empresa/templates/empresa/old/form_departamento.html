@@ -1,0 +1,44 @@
+{% extends 'empresa/index.html' %}
+{% load filters %}
+{% block miga %}
+	{% if form.instance.pk%}
+		{% include 'empresa/miga_pan.html' with miga='empresa' empresa=form.instance.empresa %}
+	{% else %}
+		{% include 'empresa/miga_pan.html' with miga='empresa' empresa=empresa %}
+	{% endif %}
+{% endblock %}
+{% block lateral %}
+	{% include 'empresa/panel_empresa.html' with empresas=''|panel_empresas %}
+{% endblock %}
+{% block contenido %}
+{% if form.instance.pk %}
+	{% include 'empresa/form_jefes.html' with form=form_jefes departamento=form.instance %}
+{% endif %}
+<form enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_departamento' form.instance.pk %}{% else %}{%url 'crear_departamento' %}{% endif %}">
+	{% csrf_token %}
+	<input name="empresa" type="hidden" value="{% if form.instance.pk %}{{form.instance.empresa.pk}}{% else %}{{empresa.pk}}{% endif %}">
+	<ul>
+		<li>
+			<label for="{{ form.superior.id_for_label }}">Superior:</label>
+		    {{ form.superior }}
+		    {{ form.superior.errors }}
+		</li>
+		<li>
+			<label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+		    {{ form.nombre }}
+		    {{ form.nombre.errors }}
+		</li>
+		<li>
+			<label for="{{ form.codigo.id_for_label }}">Codigo:</label>
+		    {{ form.codigo }}
+		    {{ form.codigo.errors }}
+		</li>
+		<li>
+			<label for="{{ form.nivel.id_for_label }}">Nivel:</label>
+		    {{ form.nivel }}
+		    {{ form.nivel.errors }}
+		</li>
+	</ul>
+	{% include 'empresa/submit.html' with editar=form.instance.pk %}
+</form>
+{% endblock %}

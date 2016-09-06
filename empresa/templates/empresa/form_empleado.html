@@ -1,0 +1,11 @@
+
+<form id="formEmpleado" enctype="multipart/form-data" method="post" action="{% if form.instance.pk %}{% url 'editar_empleado' form.instance.pk %}{% else %}{%url 'crear_empleado' %}{% endif %}">
+	{% csrf_token %}
+	<input type="hidden" name="cargo" value="{% if form.instance.pk%}{{form.instance.cargo.pk}}{% else %}{{cargo.pk}}{% endif %}">
+	<ul>
+		<li>
+            <paper-input label="Codigo:" name="codigo" type="text"></paper-input>
+		    {{ form.codigo.errors }}
+		</li>
+	</ul>
+</form>

@@ -1,0 +1,11 @@
+<ul>
+	{% for evaluacionriesgos in evaluacionriesgoss %}
+	<li>
+		<a href="{% url 'mostrar_evaluacionriesgos' evaluacionriesgos.id %}">{{evaluacionriesgos}}</a>
+		<a href="{% url 'form_editar_evaluacionriesgos' evaluacionriesgos.pk %}">e</a>
+	</li>
+	{% endfor %}
+	<li>
+		<a href="{% url 'form_crear_evaluacionriesgos' empresa.pk %}">Crear un evaluacionriesgos</a>
+	</li>
+</ul>

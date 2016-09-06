@@ -1,0 +1,14 @@
+{% block contenido %}
+	<ul class="mostrar">
+		<li>
+			<label>Nombre: </label>
+			<label>{{elementoproteger.nombre}}</label>
+		</li>
+		<li>
+			<label>Descripcion: </label>
+			<label>{{elementoproteger.descripcion}}</label>
+		</li>
+	</ul>
+	<a href="{% url 'form_editar_elementoproteger' elementoproteger.pk %}">editar</a>
+	<a href="{% url 'panel_elementoproteger' %}">panel elemetoproteger</a>
+{% endblock %}

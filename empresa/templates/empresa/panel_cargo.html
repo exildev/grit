@@ -1,0 +1,18 @@
+{% load filters %}
+{% block herramientas %}
+<a href="{% url 'form_crear_cargo' departamento.pk %}">Crear un cargo</a>
+{% endblock %}
+<ul>
+	{% for cargo in cargos %}
+	<li>
+		<a href="{% url 'mostrar_cargo' cargo.id %}">{{cargo}}({{cargo.empleados}})</a>
+		<a href="{% url 'form_editar_cargo' cargo.pk %}">e</a>
+	</li>
+	{% endfor %}
+</ul>
+
+<!--
+mostra en template el departamento al cual pertenecen los cargos
+mostar en tabla: 
+nombre,  dialogo con requisotos o opcion de crear requisitos o editarlos,editar cargo,numero de empleados, agragar empleado  
+-->

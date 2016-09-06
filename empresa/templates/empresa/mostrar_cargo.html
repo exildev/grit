@@ -1,0 +1,40 @@
+{% extends 'empresa/index.html' %}
+{% load static %}
+{% load filters %}
+{% block miga %}
+	{% include 'empresa/miga_pan.html' with miga='departamento' departamento=cargo.departamento %}
+{% endblock %}
+{% block lateral %}
+	{% include 'empresa/panel_empresa.html' with empresas=''|panel_empresas %}
+{% endblock %}
+{% block header %}
+	<script type="text/javascript" src="{% static "empresa/js/mostrar_cargo.js" %}"></script>
+{% endblock %}
+{% block contenido %}
+	{% include 'empresa/mostrar_requisito.html' %}
+	<ul class="mostrar">
+		<li>
+			<label>Nombre: </label>
+			<label>{{cargo.nombre}}</label>
+		</li>
+		<li>
+			<label>Descripcion: </label>
+			<label>{{cargo.descripcion}}</label>
+		</li>
+		<li>
+			<label>Departamento: </label>
+			<label>{{cargo.departamento}}</label>
+		</li>
+	</ul>
+	<ul id="popups">
+	{% for recordatorio in cargo.recordatorios.all %}
+		<li>
+			<a href="{% url 'mostrar_recordatorio' recordatorio.pk %}">{{recordatorio}}</a>
+			<a form="form" href="{% url 'form_editar_recordatorio' recordatorio.pk %}">e</a>
+		</li>
+	{% endfor %}
+	</ul>
+	<a href="{% url 'form_editar_cargo' cargo.pk %}">editar</a>
+	<a href="{% url 'panel_empleado' cargo.pk %}">panel empleado</a>
+	<a href="{% url 'mostrar_cargoriesgo' cargo.pk %}">administrar riesgo</a>
+{% endblock %}

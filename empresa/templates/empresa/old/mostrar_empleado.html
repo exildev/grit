@@ -1,0 +1,31 @@
+{ extends 'empresa/index.html' }
+{% load static %}
+{% load filters %}
+{% block lateral %}
+	{% include 'empresa/panel_empresa.html' with empresas=''|panel_empresas %}
+{% endblock %}
+{% block miga %}
+	{% include 'empresa/miga_pan.html' with miga='cargo' cargo=empleado.cargo %}
+{% endblock %}
+{% block header %}
+	<link rel='stylesheet' href='{% static "huella/css/fullcalendar.min.css" %}' />
+
+	<script type="text/javascript" src='{% static "huella/js/moment.min.js" %}'></script>
+	<script type="text/javascript" src='{% static "huella/js/fullcalendar.min.js" %}'></script>
+	<script type="text/javascript" src="{% static "empresa/js/mostrar_empleado.js" %}"></script>
+{% endblock %}
+{% block contenido %}
+	<ul class="mostrar">
+		<li>
+			<label>Codigo: </label>
+			<label>{{empleado.codigo}}</lanel>
+		</li>
+		<li>
+			<label>Cargo: </label>
+			<label>{{empleado.cargo}}</lanel>
+		</li>
+	</ul>
+	<a href="{% url 'form_editar_empleado' empleado.pk %}">editar</a>
+	<input type="hidden" name="empleado" value="{{empleado.pk}}" />
+	<div id="avisos"></div>
+{% endblock %}

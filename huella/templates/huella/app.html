@@ -1,0 +1,53 @@
+{%extends "admin/app_index.html" %}
+{% load i18n static %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+{% endblock %}
+{%block content%}
+	{% for app in app_list %}
+        <div class="app-{{ app.app_label }} module">
+        <table>
+        <caption>
+            <a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
+            	<i class="fa {% icon app.name %}"></i>-{{ app.name }}
+            </a>
+        </caption>
+        {% for model in app.models %}
+            <tr class="model-{{ model.object_name|lower }}">
+            {% if model.admin_url %}
+                <th scope="row">
+                	<a href="{{ model.admin_url }}">
+                		<i class="fa {% icon model.name %}"></i>
+                		{{ model.name }}
+                	</a>
+                </th>
+            {% else %}
+                <th scope="row">{{ model.name }}</th>
+            {% endif %}
+
+            {% if model.add_url %}
+                <td>
+                	<a href="{{ model.add_url }}">
+                		<i class="fa fa-plus-circle"></i>
+                	</a>
+                </td>
+            {% else %}
+                <td>&nbsp;</td>
+            {% endif %}
+
+            {% if model.admin_url %}
+                <td>
+                	<a href="{{ model.admin_url }}">
+                		<i class="fa fa-pencil"></i>
+                	</a>
+            	</td>
+            {% else %}
+                <td>&nbsp;</td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+    {% endfor %}
+{%endblock%}

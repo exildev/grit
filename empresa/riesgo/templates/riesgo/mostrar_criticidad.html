@@ -1,0 +1,14 @@
+{% block contenido %}
+	<ul class="mostrar">
+		<li>
+			<label>Nombre: </label>
+			<label>{{criticidad.nombre}}</label>
+		</li>
+		<li>
+			<label>Descripcion: </label>
+			<label>{{criticidad.descripcion}}</label>
+		</li>
+	</ul>
+	<a href="{% url 'form_editar_criticidad' criticidad.pk %}">editar</a>
+	<a href="{% url 'panel_criticidad' %}">panel criticidad</a>
+{% endblock %}

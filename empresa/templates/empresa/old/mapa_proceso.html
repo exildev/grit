@@ -1,0 +1,12 @@
+<ul>
+	{% for departamento in departamentos %}
+	<li>
+		<a href="{% url 'mostrar_departamento' departamento.id %}">{{departamento.nombre}}</a>
+		<a href="{% url 'form_editar_departamento' departamento.id %}">e</a>
+		<a href="{% url 'panel_cargo' departamento.id %}">p</a>
+		{% if departamento.hijos|length %}
+			{% include 'empresa/mapa_proceso.html' with departamentos=departamento.hijos %}
+		{% endif %}
+	</li>
+	{% endfor %}
+</ul>

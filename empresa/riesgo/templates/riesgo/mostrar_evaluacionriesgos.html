@@ -1,0 +1,70 @@
+{% block contenido %}
+	<ul class="mostrar">
+		<li>
+			<label for="empresa">empresa:</label>
+			<label>{{evaluacionriesgos.empresa}}</label>
+		</li>
+		<li>
+			<label for="riesgo">riesgo:</label>
+			<label>{{evaluacionriesgos.riesgo}}</label>
+		</li>
+		<li>
+			<label for="fuente">fuente:</label>
+			<label>{{evaluacionriesgos.fuente}}</label>
+		</li>
+		<li>
+			<label for="medio">medio:</label>
+			<label>{{evaluacionriesgos.medio}}</label>
+		</li>
+		<li>
+			<label for="persona">persona:</label>
+			<label>{{evaluacionriesgos.persona}}</label>
+		</li>
+		<li>
+			<label for="Metodo">Metodo:</label>
+			<label>{{evaluacionriesgos.Metodo}}</label>
+		</li>
+		<li>
+			<label for="valor_probabilidad">valor_probabilidad:</label>
+			<label>{{evaluacionriesgos.valor_probabilidad}}</label>
+		</li>
+		<li>
+			<label for="nivel_probabilidad">nivel_probabilidad:</label>
+			<label>{{evaluacionriesgos.nivel_probabilidad}}</label>
+		</li>
+		<li>
+			<label for="valor_consecuencia">valor_consecuencia:</label>
+			<label>{{evaluacionriesgos.valor_consecuencia}}</label>
+		</li>
+		<li>
+			<label for="nivel_consecuencia">nivel_consecuencia:</label>
+			<label>{{evaluacionriesgos.nivel_consecuencia}}</label>
+		</li>
+		<li>
+			<label for="valor_estimacion">valor_estimacion:</label>
+			<label>{{evaluacionriesgos.valor_estimacion}}</label>
+		</li>
+		<li>
+			<label for="nivel_aceptabilidad">nivel_aceptabilidad:</label>
+			<label>{{evaluacionriesgos.nivel_aceptabilidad}}</label>
+		</li>
+		<li>
+			<label for="controles_administrativos">controles_administrativos:</label>
+			<label>{{evaluacionriesgos.controles_administrativos}}</label>
+		</li>
+		<li>
+			<label for="controles_operacionales">controles_operacionales:</label>
+			<label>{{evaluacionriesgos.controles_operacionales}}</label>
+		</li>
+		<li>
+			<label for="controles_talentoHumano">controles_talentoHumano:</label>
+			<label>{{evaluacionriesgos.controles_talentoHumano}}</label>
+		</li>
+		<li>
+			<label for="controles_instalacion">controles_instalacion:</label>
+			<label>{{evaluacionriesgos.controles_instalacion}}</label>
+		</li>
+	</ul>
+	<a href="{% url 'form_editar_evaluacionriesgos' evaluacionriesgos.pk %}">Editar</a>
+	<a href="{% url 'panel_evaluacionriesgos' evaluacionriesgos.empresa.pk %}">Panel evaluacionriesgoss</a>
+{% endblock %}

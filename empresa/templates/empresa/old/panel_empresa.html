@@ -1,0 +1,44 @@
+{% extends 'huella/index.html' %}
+{% block dialogs %}
+<paper-dialog id="df1" backdrop layered transition="core-transition-top">
+    <core-toolbar>
+        <core-icon-button icon="menu"></core-icon-button>
+        <div class="bottom indent">App</div>
+        <span flex></span>
+        <core-icon-button icon="close"></core-icon-button>
+    </core-toolbar>
+   <div class="content" layout vertical>
+        <input placeholder="say something..." autofocus>
+        <ajax-load url="{% url 'form_crear_empresa' %}"></ajax-load>
+        <div horizontal layout>
+            <paper-button core-overlay-toggle onclik="$('form').submit();">Enviar</paper-button>
+            <paper-button core-overlay-toggle>Cancelar</paper-button>     
+        </div>   
+   </div>
+</paper-dialog>
+{% endblock %}
+
+{% block body %}
+<table id="mitabla" is="data-table" url="{% url 'json_empresa' %}">
+    <thead>
+        <tr>
+            <th is="d-th" data="logo">
+                Logo
+                <data-config>
+                    <textarea>
+                        <!-- img src="/media/[[data]]" width="50" /-->
+                    </textarea>
+                </data-config>
+            </th>
+            <th is="d-th" data="codigo">Codigo</th>
+            <th is="d-th" data="razons">Razons</th>
+            <th is="d-th" data="ident">Ident</th>
+            <th is="d-th" data="telefono">Telefono</th>
+            <th is="d-th" data="ciudad">Ciudad</th>
+            <th is="d-th" data="activo">Activo</th>
+            <th is="d-th" data="email">Email</th>
+            <th is="d-th" data="direccion">Direccion</th>
+        </tr>
+    </thead>
+</table>
+{% endblock %}

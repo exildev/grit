@@ -1,0 +1,138 @@
+<style is="custom-style">
+    :root {
+        --dark-primary-color: #00796B;
+        --default-primary-color: #009688;
+        --light-primary-color: #B2DFDB;
+        --text-primary-color: #FFFFFF;
+        --accent-color: #795548;
+        --primary-background-color: #B2DFDB;
+        --primary-text-color: #212121;
+        --secondary-text-color: #727272;
+        --disabled-text-color: #BDBDBD;
+        --divider-color: #B6B6B6;
+        /* Components */
+        /* paper-drawer-panel */
+        
+        --drawer-menu-color: #ffffff;
+        --drawer-border-color: 1px solid #ccc;
+        --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+        /* paper-menu */
+        
+        --paper-menu-background-color: #fff;
+        --menu-link-color: #111111;
+        /* paper-input */
+        
+        --paper-input-container-color: rgba(121, 85, 72, 0.64);
+        --paper-input-container-focus-color: rgba(121, 85, 72, 1);
+        --paper-input-container-input-color: #795548;
+    }
+    
+    paper-menu .content.paper-menu > iron-collapse:focus:after {
+        display: none !important;
+    }
+    
+    .content.paper-menu > iron-collapse:focus:after {
+        background-color: inherit;
+        opacity: inherit;
+        content: inherit;
+    }
+    
+    .content.paper-menu > iron-collapse.iron-selected {
+        font-weight: inherit;
+    }
+    
+    paper-material {
+        padding: 7px 20px;
+        border-radius: 3px;
+        background: white;
+        width: calc(100% - 50px);
+        margin: 0 auto;
+        margin-top: 7px;
+    }
+    
+    paper-dialog > .dialogContent{
+        width: 320px;
+    }
+            
+    paper-button {
+        color: white;
+        margin: 10px;
+        background-color: var(--accent-color);
+        white-space: nowrap;
+    }
+    
+    paper-icon-item,
+    paper-item {
+        /*border-top: 1px solid var(--divider-color);*/
+        
+        border-bottom: 1px solid var(--dark-primary-color);
+    }
+    
+    paper-icon-item paper-icon-button {
+        position: relative;
+        z-index: 2;
+    }
+    
+    paper-drawer-panel [drawer] paper-menu {
+        background-color: var(--paper-grey-900);
+        color: var(--text-primary-color);
+    }
+    
+    paper-drawer-panel [drawer] paper-menu .iron-selected {
+        border-left: 4px solid var(--dark-primary-color);
+    }
+    
+    paper-drawer-panel {
+        --paper-drawer-panel-main-container: {
+            background-color: var(--paper-teal-50);
+        };
+        --paper-drawer-panel-left-drawer-container: {
+            background-color: var(--paper-grey-900);
+            color: var(--text-primary-color)
+        };
+    }
+    
+    paper-header-panel {}
+    
+    paper-header-panel section {
+        padding: 7px
+    }
+    
+    form ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .avatar {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ccc;
+    }
+    
+    .blue {
+        background-color: var(--paper-light-blue-300);
+    }
+    
+    .red {
+        background-color: var(--paper-red-300);
+    }
+    
+    .orange {
+        background-color: var(--paper-amber-300);
+    }
+    
+    .green {
+        background-color: var(--paper-green-300);
+    }
+    
+    .collapse-content {
+        padding: 15px;
+        border-bottom: 1px solid var(--divider-color);
+    }
+</style>

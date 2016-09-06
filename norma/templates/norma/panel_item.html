@@ -1,0 +1,11 @@
+<ul>
+	{% for item in items %}
+	<li>
+		<a href="{% url 'mostrar_item' item.id %}">{{item}}</a>
+		<a href="{% url 'form_editar_item' item.pk %}">e</a>
+	</li>
+	{% endfor %}
+	<li>
+		<a href="{% url 'form_crear_item' norma.pk %}">Crear un item</a>
+	</li>
+</ul>

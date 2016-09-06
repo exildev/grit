@@ -1,0 +1,9 @@
+{{registro.formulario}}
+<ul>
+	{% for entrada in entradas %}
+	<li>
+		<label>{{entrada.campo.nombre}}:</label>
+		<label>{{entrada.valor}}</label>
+	</li>
+	{% endfor %}
+</ul>

@@ -1,0 +1,11 @@
+<ul>
+	{% for recordatorio in recordatorios %}
+	<li>
+		<a href="{% url 'mostrar_recordatorio' recordatorio.id %}">{{recordatorio}}</a>
+		<a href="{% url 'form_editar_recordatorio' recordatorio.pk %}">e</a>
+	</li>
+	{% endfor %}
+	<li>
+		<a href="{% url 'form_crear_recordatorio' 1 %}">Crear un recordatorio</a>
+	</li>
+</ul>

@@ -1,0 +1,41 @@
+<neon-animatable departamento="{{id}}">
+    <paper-material elevation="1">
+        <paper-menu>
+            {% for departamento in departamentos %}
+            <paper-icon-item>
+                <div class="avatar green" item-icon>D</div>
+                <paper-item-body two-line>
+                    <div><a href="{% url 'mostrar_departamento' departamento.id %}">{{departamento.nombre}}</a></div>
+                    <div secondary>
+                        Departamento
+                    </div>
+                </paper-item-body>
+                <paper-icon-button icon="create" onclick="location.href='{% url 'form_editar_departamento' departamento.id %}';"></paper-icon-button>
+                <paper-icon-button icon="class" onclick="toggle({{departamento.id}});"></paper-icon-button>
+                {% if id > 0 %}
+                <paper-icon-button icon="chevron-left" onclick="go({{back}});"></paper-icon-button>
+                {% endif %}
+                {% if departamento.hijos|length %}
+                <paper-icon-button icon="chevron-right" onclick="go({{departamento.id}});"></paper-icon-button-->
+                {% endif %}
+            </paper-icon-item>
+            <iron-collapse id="collapse{{departamento.id}}">
+                <div class="collapse-content">
+                    <ex-table id="table{{departamento.id}}" url="{% url 'json_cargo'%}?departamento={{departamento.id}}" >
+                        <ex-table-data name="nombre"     targets="0"> </ex-table-data>
+                        <ex-table-data name="requisito"  targets="1" render="return requisito(data, type, row);" ></ex-table-data>
+                        <ex-table-data name="empleados"  targets="2"></ex-table-data>
+                        <ex-table-data name="agregar"    targets="3" render="return agregar(data, type, row);"></ex-table-data>
+                        <ex-table-data name="editar"     targets="4" render="return editar(data, type, row);"></ex-table-data>
+                    </ex-table>
+                </div>
+            </iron-collapse>
+            {%endfor%}
+        </paper-menu>
+    </paper-material>    
+</neon-animatable>
+{% for departamento in departamentos%}
+    {% if departamento.hijos|length %}
+        {% include 'empresa/mapa_proceso.html' with departamentos=departamento.hijos back=id id=departamento.id %}
+    {% endif %}
+{% endfor %}

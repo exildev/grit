@@ -1,0 +1,38 @@
+<template id="mapa-proceso" is="dom-bind">
+    <neon-animated-pages id="mpp" selected="0" attr-for-selected="departamento" entry-animation="slide-from-right-animation" exit-animation="slide-left-animation" style="position: static;">
+        {% include 'empresa/mapa_proceso.html' with departamentos=departamentos id=0 %}
+    </neon-animated-pages>
+</template>
+<script>
+    function editar(data, type, row){
+        var fn = "<paper-button raised onclick=\"document.querySelector('#formCargo').submit()\">Editar</paper-button>";
+        return '<ex-dialog icon="create" fab="Editar" head="Editar" url="/empresa/form/editar/cargo/'+data+'/">'+fn+'</ex-dialog>';
+    }
+
+    function agregar(data, type, row){
+        var fn = "<paper-button raised onclick=\"document.querySelector('#formEmpleado').submit()\">Agregar</paper-button>";
+        return '<ex-dialog icon="add" fab="Agregar" head="Agregar Empleado" url="/empresa/form/crear/empleado/'+data+'/">'+fn+'</ex-dialog>';
+    }
+    
+    function requisito(data, type, row){
+        data = JSON.parse(data);
+        var fn = "<paper-button raised onclick=\"document.querySelector('#formRequisito').submit()\">Agregar</paper-button>";
+        if(data[0]==0){
+            return '<ex-dialog icon="assignment" fab="Requsitos" head="Requisitos para el cargo:" url="/empresa/form/crear/requisito/'+data[1]+'/">'+fn+'</ex-dialog>';
+        } 
+        return '<ex-dialog icon="assignment" fab="Requsitos" head="Requisitos para el cargo" url="/empresa/form/editar/requisito/'+data[1]+'/">'+fn+'</ex-dialog>';
+    }
+
+    function toggle(id){
+        var col = document.querySelector('#collapse'+id);
+        col.toggle();
+    }
+    
+    function go(id) {
+        var mpp = document.querySelector("#mpp");
+        if(mpp != null){
+            mpp.select(id);
+        }
+    }
+</script>
+
