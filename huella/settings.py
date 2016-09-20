@@ -47,13 +47,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'huella',
     'empresa',
     'empresa.riesgo',
     'norma',
     'norma.formulario',
     'notificacion',
     'usr',
-    'huella',
     'validable',
 )
 
@@ -89,6 +89,22 @@ EXILE_UI = {
                 ],
                 'models': {
                     'Asistencia': {}
+                },
+            },'riesgo': {
+                'icon': 'settings',
+                'groups': [
+                ],
+                'models': {
+                    'ElementoProteger': {}
+                },
+            },'norma': {
+                'icon': 'settings',
+                'groups': [
+                ],
+                'models': {
+                    'Norma': {},
+                    'Item': {},
+                    'Formato': {}
                 }
             },
             'auth': {
@@ -125,6 +141,24 @@ MENU_ORDER = [
         'models': [
             'Asistencia',
             'User'
+        ]
+    },{
+        'name': 'riesgo',
+        'models': [
+            'Criticidad',
+            'ElementoProteger',
+            'CargoRiesgo',
+            'Riesgo',
+            'EvaluacionRiesgos',
+            'EvaluacionEmpresa',
+        ]
+    },
+    {
+        'name': 'norma',
+        'models': [
+            'Norma',
+            'Item',
+            'Formato'
         ]
     },
     {

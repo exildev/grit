@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from huella.admin import admin_site
+from exile_ui.admin import admin_site
 from django.contrib import admin
 import forms
 from django.db.models import Q

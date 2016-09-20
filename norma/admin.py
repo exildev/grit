@@ -1,4 +1,4 @@
-from huella.admin import admin_site
+from exile_ui.admin import admin_site
 from django.contrib import admin
 from models import Norma, Item, Formato
 from forms import NormaForm, ItemForm, FormatoForm
@@ -25,5 +25,5 @@ class AdminFormato(admin.ModelAdmin):
 
 
 admin_site.register(Norma, AdminNorma)
-#admin_site.register(Item, AdminItem)
+admin_site.register(Item, AdminItem)
 admin_site.register(Formato, AdminFormato)

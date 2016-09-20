@@ -1,4 +1,4 @@
-from huella.admin import admin_site
+from exile_ui.admin import admin_site
 from django.contrib import admin
 import unicodedata
 import models
@@ -28,6 +28,8 @@ class RegistroAdmin(admin.ModelAdmin):
 
 	def get_form(self, request, obj=None, *args, **kwargs):
 		if obj and request.user.pk == obj.empleado.pk:
+			self.form = forms.RegistroEditForm.make(obj)
+		elif obj and obj.completado:
 			self.form = forms.RegistroEditForm.make(obj)
 		else:
 			self.form = forms.RegistroCreateForm
