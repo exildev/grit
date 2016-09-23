@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
 Django settings for grit project.
 
@@ -223,7 +225,7 @@ DATABASES = {
         'NAME': 'grit',
         'USER': 'postgres',
         'PASSWORD': 'Exile*74522547',
-        'HOST': '127.0.0.1',
+        'HOST': '104.236.33.228',
         'PORT': '5432',
     }
 }
@@ -265,6 +267,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_ROOT = '/var/www/grit/static/'
-STATIC_URL = '/static/
+STATIC_URL = '/static/'
 MEDIA_ROOT = '/var/www/grit/media/'
 MEDIA_URL = '/media/'
