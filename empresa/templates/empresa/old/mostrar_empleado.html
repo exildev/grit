@@ -8,10 +8,10 @@
 	{% include 'empresa/miga_pan.html' with miga='cargo' cargo=empleado.cargo %}
 {% endblock %}
 {% block header %}
-	<link rel='stylesheet' href='{% static "huella/css/fullcalendar.min.css" %}' />
+	<link rel='stylesheet' href='{% static "grit/css/fullcalendar.min.css" %}' />
 
-	<script type="text/javascript" src='{% static "huella/js/moment.min.js" %}'></script>
-	<script type="text/javascript" src='{% static "huella/js/fullcalendar.min.js" %}'></script>
+	<script type="text/javascript" src='{% static "grit/js/moment.min.js" %}'></script>
+	<script type="text/javascript" src='{% static "grit/js/fullcalendar.min.js" %}'></script>
 	<script type="text/javascript" src="{% static "empresa/js/mostrar_empleado.js" %}"></script>
 {% endblock %}
 {% block contenido %}

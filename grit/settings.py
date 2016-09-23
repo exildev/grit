@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Django settings for huella project.
+Django settings for grit project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'huella',
+    'grit',
     'empresa',
     'empresa.riesgo',
     'norma',
@@ -202,9 +202,9 @@ MIDDLEWARE_CLASSES = (
     'cuser.middleware.CuserMiddleware',
 )
 
-ROOT_URLCONF = 'huella.urls'
+ROOT_URLCONF = 'grit.urls'
 
-WSGI_APPLICATION = 'huella.wsgi.application'
+WSGI_APPLICATION = 'grit.wsgi.application'
 
 
 # Database

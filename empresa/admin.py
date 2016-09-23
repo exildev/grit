@@ -7,10 +7,10 @@ import models as empresa
 from usr import  models as usr
 from usr import forms as usr_form
 from cuser.middleware import CuserMiddleware
-from huella import forms as huella
+from grit import forms as grit
 
 class EmpresaUsrInline(admin.StackedInline):
-    form = huella.UserForm
+    form = grit.UserForm
     model = usr.Empresa
 #end class
 
