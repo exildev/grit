@@ -110,13 +110,16 @@ EXILE_UI = {
             },'epc': {
                 'icon': 'settings',
                 'groups': [
+                    'EPC'
                 ],
                 'models': {
-                    'Contratista': {},
-                    'Material': {},
-                    'OrdenTrabajo': {},
-                    'Actividad': {},
-                    'Proyecto': {},
+                    'Contrato': {'group': 'EPC', 'icon': 'library_books'},
+                    'Contratista': {'group': 'EPC', 'icon': 'person'},
+                    'Material': {'group': 'EPC', 'icon': 'layers'},
+                    'OrdenTrabajo': {'group': 'EPC', 'icon': 'near_me'},
+                    'Actividad': {'group': 'EPC', 'icon': 'access_time'},
+                    'Proyecto': {'group': 'EPC', 'icon': 'folder_open' },
+                    'TipoAdquisiscion': {'group': 'EPC', 'icon': 'toys' },
                 }
             },
             'auth': {

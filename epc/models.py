@@ -4,6 +4,10 @@ from django.db import models
 
 class Contratista(models.Model):
 	nombre = models.CharField(max_length=100)
+
+	def __unicode__(self):
+		return "%s" % (self.nombre, )
+	# end def
 # end class
 
 class Contrato(models.Model):
@@ -16,11 +20,17 @@ class Material(models.Model):
 	nombre = models.CharField(max_length=100)
 	uso_unico = models.BooleanField(default=False)
 
+	def __unicode__(self):
+		return "%s" % (self.nombre, )
+	# end def
 # end class
 
 class TipoAdquisiscion(models.Model):
 	nombre = models.CharField(max_length=100)
 
+	def __unicode__(self):
+		return "%s" % (self.nombre, )
+	# end def
 # end class
 
 class AdquisiscionMaterial(models.Model):
@@ -32,6 +42,9 @@ class AdquisiscionMaterial(models.Model):
 
 class Proyecto(models.Model):
 	nombre = models.CharField(max_length=100)
+	def __unicode__(self):
+		return "%s" % (self.nombre, )
+	# end def
 # end class
 
 class OrdenTrabajo(models.Model):
@@ -61,6 +74,9 @@ class OrdenTrabajo(models.Model):
 		# end if
 		return 0
 	# end def
+	def __unicode__(self):
+		return "%s" % (self.nombre_corto, )
+	# end def
 # end class
 
 class Actividad(models.Model):
@@ -74,6 +90,9 @@ class Actividad(models.Model):
 		if self.fecha_completado and self.fecha_estimada:
 			return self.fecha_completado - self.fecha_estimada
 		# end def
+	# end def
+	def __unicode__(self):
+		return "%s" % (self.nombre, )
 	# end def
 # end class
 
