@@ -1,0 +1,58 @@
+
+.matriz-riesgo{
+
+}
+
+.matriz-riesgo div{
+	display: none;
+}
+
+textarea {
+	width: 250px;
+	height: 150px;
+}
+
+.matriz-riesgo select {
+}
+
+.matriz-riesgo p {
+	text-align: center;
+}
+
+.matriz-riesgo p[color="bajo"] {
+	background-color: #6d6;
+}
+
+.matriz-riesgo p[color="moderado"] {
+	background-color: #ddd;
+}
+
+.matriz-riesgo p[color="alto"] {
+	background-color: #dd6;
+}
+
+.matriz-riesgo p[color="extremo"] {
+	background-color: #f22;
+	color: #eee;
+}
+
+ul.errorlist {
+	position: absolute;
+	background-color: #F5B8B8;
+	border: red solid 1px;
+	color: #f33;
+	z-index: 106;
+	list-style-type: none;
+	padding: 0px;
+	width: 100px;
+	display: none;
+}
+
+ul.errorlist + *[name], ul.errorlist + label{
+	color: #f44;
+	content: "!";
+}
+
+td:hover ul.errorlist {
+	display: block;
+}
