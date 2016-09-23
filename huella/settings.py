@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'notificacion',
     'usr',
     'validable',
+    'epc',
 )
 
 EXILE_UI = {
@@ -105,6 +106,17 @@ EXILE_UI = {
                     'Norma': {},
                     'Item': {},
                     'Formato': {}
+                }
+            },'epc': {
+                'icon': 'settings',
+                'groups': [
+                ],
+                'models': {
+                    'Contratista': {},
+                    'Material': {},
+                    'OrdenTrabajo': {},
+                    'Actividad': {},
+                    'Proyecto': {},
                 }
             },
             'auth': {
@@ -162,10 +174,13 @@ MENU_ORDER = [
         ]
     },
     {
-        'name': 'auth',
+        'name': 'epc',
         'models': [
-            'Group',
-            'User'
+            'Contratista',
+            'Material',
+            'OrdenTrabajo',
+            'Actividad',
+            'Proyecto',
         ]
     },
     {

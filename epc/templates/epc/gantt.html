@@ -1,0 +1,54 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['gantt']});
+google.charts.setOnLoadCallback(drawChart);
+
+function daysToMilliseconds(days) {
+  return days * 24 * 60 * 60 * 1000;
+}
+
+function drawChart() {
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Task ID');
+  data.addColumn('string', 'Task Name');
+  data.addColumn('date', 'Start Date');
+  data.addColumn('date', 'End Date');
+  data.addColumn('number', 'Duration');
+  data.addColumn('number', 'Percent Complete');
+  data.addColumn('string', 'Dependencies');
+  {%for p in ordenes %}
+    console.log('{{p.fecha_final_estimada}}', new Date('{{p.fecha_final_estimada|date:"Y-m-d"}}'));
+  {% endfor %}
+
+  data.addRows([
+    {%for p in ordenes %}
+      [
+        '{{p.pk}}', // key
+        '{{p.nombre_corto}}', // name
+        new Date('{{p.fecha|date:"Y-m-d"}}'), //start
+        new Date('{{p.fecha_final_estimada|date:"Y-m-d"}}'), //end
+        null,  // days (in miliseconds)
+        {{p.completado}},  // complete porcent
+        '{% for k in p.dependencias.all %}{{k.pk}}{% if not forloop.last %},{% endif %}{% endfor %}' // previous key (separated by comma)
+      ],
+    {% endfor %}
+  ]);
+
+  var options = {
+    height: 275
+  };
+
+  var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+
+  chart.draw(data, options);
+}
+</script>
+<style type="text/css">
+  #chart_div{
+    width: calc(100% - 100px);
+    margin: 0 auto;
+  }
+</style>
+<input type="hidden" name="{{name}}" value="{{value}}">
+<div id="chart_div"></div>
