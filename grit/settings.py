@@ -213,9 +213,9 @@ WSGI_APPLICATION = 'grit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'huella',
+        'NAME': 'grit',
         'USER': 'postgres',
-        'PASSWORD': '123456',
+        'PASSWORD': 'Exile*74522547',
         'HOST': '127.0.0.1',
         'PORT': '5432',     
     }
@@ -237,7 +237,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-STATIC_ROOT = '/var/www/html/static/'
+STATIC_ROOT = '/var/www/grit/static/'
 STATIC_URL = '/static/'#'http://192.168.42.130/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'huella/media/')
+MEDIA_ROOT = '/var/www/grit/media/'
