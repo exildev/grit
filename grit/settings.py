@@ -146,7 +146,7 @@ EXILE_UI = {
                     'User': {'icon': 'person', 'group': 'Seguridad'}
                 }
             },
-            'notficacion':{
+            'notificacion':{
                 'groups': [
                     'Notificacion'
                 ],
