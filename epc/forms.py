@@ -11,7 +11,7 @@ class OrdenTrabajoForm(forms.ModelForm):
 		model = models.OrdenTrabajo
 		exclude = []
 		widgets = {
-            "fecha_de_ejecucion": DatePickerWidget(attrs={'class': 'date'}, format="%m/%d/%Y")
+            "fecha": DatePickerWidget(attrs={'class': 'date'}, format="%m/%d/%Y")
         }
     # end class
 # end class
