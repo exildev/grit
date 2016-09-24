@@ -104,12 +104,12 @@ EXILE_UI = {
                     'Riesgo'
                 ],
                 'models': {
-                    'Criticidad': {'icon': '', 'group': 'Riesgo'},
-                    'ElementoProteger': {'icon': '', 'group': 'Riesgo'},
-                    'CargoRiesgo': {'icon': '', 'group': 'Riesgo'},
-                    'Riesgo': {'icon': '', 'group': 'Riesgo'},
-                    'EvaluacionEmpresa': {'icon': '', 'group': 'Riesgo'},
-                    'EvaluacionRiesgos': {'icon': '', 'group': 'Riesgo'},
+                    'Criticidad': {'icon': 'whatshot', 'group': 'Riesgo'},
+                    'ElementoProteger': {'icon': 'security', 'group': 'Riesgo'},
+                    'CargoRiesgo': {'icon': 'assignment_late', 'group': 'Riesgo'},
+                    'Riesgo': {'icon': 'warning', 'group': 'Riesgo'},
+                    'EvaluacionEmpresa': {'icon': 'account_balance', 'group': 'Riesgo'},
+                    'EvaluacionRiesgos': {'icon': 'assignment_turned_in', 'group': 'Riesgo'},
                 },
             }, 'norma': {
                 'icon': 'settings',
