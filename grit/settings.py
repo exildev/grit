@@ -147,6 +147,7 @@ EXILE_UI = {
                 }
             },
             'notificacion':{
+                'icon': 'add_alert',
                 'groups': [
                     'Notificacion'
                 ],
