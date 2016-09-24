@@ -156,7 +156,7 @@ EXILE_UI = {
                     'Aviso': {'icon': 'add_alert', 'gruop': 'Notificacion'},
                     'Revision': {'icon': 'check', 'gruop': 'Notificacion'},
                 }
-            }
+            },
             'logout': {
                 'icon': 'exit_to_app',
             }
