@@ -146,6 +146,17 @@ EXILE_UI = {
                     'User': {'icon': 'person', 'group': 'Seguridad'}
                 }
             },
+            'notficacion':{
+                'groups': [
+                    'Notificación'
+                ],
+                'models': {
+                    'Recordatorio': {'icon': 'alarm', 'gruop': 'Notificación'},
+                    'Periodicidad': {'icon': 'linear scale', 'gruop': 'Notificación'},
+                    'Aviso': {'icon': 'add_alert', 'gruop': 'Notificación'},
+                    'Revision': {'icon': 'check', 'gruop': 'Notificación'},
+                }
+            }
             'logout': {
                 'icon': 'exit_to_app',
             }
