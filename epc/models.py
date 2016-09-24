@@ -11,8 +11,8 @@ class Contratista(models.Model):
 # end class
 
 class Contrato(models.Model):
-	fecha_inicio = models.DateField(input_formats=['%m/%d/%Y'], )
-	fecha_final  = models.DateField(input_formats=['%m/%d/%Y'], )
+	fecha_inicio = models.DateField()
+	fecha_final  = models.DateField()
 	contratista = models.ForeignKey(Contratista)
 # end class
 
@@ -52,8 +52,8 @@ class OrdenTrabajo(models.Model):
 	proyecto = models.ForeignKey(Proyecto)
 	contratista = models.ForeignKey(Contrato)
 	materiales = models.ManyToManyField(Material, through=AdquisiscionMaterial)
-	fecha = models.DateField(input_formats=['%m/%d/%Y'], )
-	fecha_creacion = models.DateField(input_formats=['%m/%d/%Y'], auto_now_add=True)
+	fecha = models.DateField()
+	fecha_creacion = models.DateField(auto_now_add=True)
 	dependencias = models.ManyToManyField('OrdenTrabajo', blank=True)
 
 	def fecha_final_estimada(self):
@@ -83,8 +83,8 @@ class Actividad(models.Model):
 	nombre = models.CharField(max_length=100)
 	orden = models.ForeignKey(OrdenTrabajo)
 	completado = models.BooleanField()
-	fecha_estimada = models.DateField(input_formats=['%m/%d/%Y'], )
-	fecha_completado = models.DateField(input_formats=['%m/%d/%Y'], null=True, blank=True)
+	fecha_estimada = models.DateField()
+	fecha_completado = models.DateField(null=True, blank=True)
 
 	def desface(self):
 		if self.fecha_completado and self.fecha_estimada:
