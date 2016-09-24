@@ -14,7 +14,7 @@ class EmpresaAdmin(admin.ModelAdmin):
 	form = forms.EmpresaForm
 #end class
 
-admin_site.register(Empresa, EmpresaAdmin)
-admin_site.register(Auditor)
-admin_site.register(Administrador)
-admin_site.register(Empleado, EmpleadoAdmin)
+#admin_site.register(Empresa, EmpresaAdmin)
+#admin_site.register(Auditor)
+#admin_site.register(Administrador)
+#admin_site.register(Empleado, EmpleadoAdmin)
