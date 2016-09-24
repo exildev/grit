@@ -99,7 +99,7 @@ EXILE_UI = {
                     'LiquidacionNomina': {'icon': 'attach_money', 'group': 'Empresa'},
                 },
             }, 'riesgo': {
-                'icon': 'settings',
+                'icon': 'warning',
                 'groups': [
                     'Riesgo'
                 ],
@@ -112,13 +112,14 @@ EXILE_UI = {
                     'EvaluacionRiesgos': {'icon': 'assignment_turned_in', 'group': 'Riesgo'},
                 },
             }, 'norma': {
-                'icon': 'settings',
+                'icon': 'assignment',
                 'groups': [
+                    'Norma'
                 ],
                 'models': {
-                    'Norma': {},
-                    'Item': {},
-                    'Formato': {}
+                    'Norma': {'icon':'assignment', 'group': 'Norma'},
+                    'Item': {'icon':'list', 'group': 'Norma'},
+                    'Formato': {'icon':'receipt', 'group': 'Norma'}
                 }
             }, 'epc': {
                 'icon': 'settings',
