@@ -175,6 +175,14 @@ MENU_ORDER = [
             'Valor',
             'Entrada',
         ]
+    },{
+        'name': 'notificacion',
+        'models': [
+            'Recordatorio',
+            'Periodicidad',
+            'Aviso',
+            'Revision'
+        ]
     },
     {
         'name': 'empresa',
