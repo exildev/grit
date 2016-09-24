@@ -152,7 +152,7 @@ EXILE_UI = {
                 ],
                 'models': {
                     'Recordatorio': {'icon': 'alarm', 'gruop': 'Notificacion'},
-                    'Periodicidad': {'icon': 'linear scale', 'gruop': 'Notificacion'},
+                    'Periodicidad': {'icon': 'linear_scale', 'gruop': 'Notificacion'},
                     'Aviso': {'icon': 'add_alert', 'gruop': 'Notificacion'},
                     'Revision': {'icon': 'check', 'gruop': 'Notificacion'},
                 }
