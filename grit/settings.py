@@ -59,7 +59,7 @@ EXILE_UI = {
     'media': {
         'logo': {
             'dashboard': '/media/grit_logo/logo-grit.png',
-            'page': '/media/grit_logo/isotipo-grit.png',
+            'page': '/media/grit_logo/logo-grit_200.png',
             'login': '/media/grit_logo/logo-grit.png'
         },
         'icons': {
