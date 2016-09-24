@@ -79,11 +79,24 @@ EXILE_UI = {
                 }
             },
             'empresa': {
-                'icon': 'settings',
+                'icon': 'business',
                 'groups': [
+                    'Empresa'
                 ],
                 'models': {
-                    'Asistencia': {}
+                    'Configuracion': {'icon': 'settings': 'group': 'empresa'},
+                    'Calculos': {'icon': 'functions': 'group': 'empresa'},
+                    'Anio': {'icon': 'date_range': 'group': 'empresa'},
+                    'Empresa': {'icon': 'business': 'group': 'empresa'},
+                    'Departamento': {'icon': 'view_compact': 'group': 'empresa'},
+                    'Cargo': {'icon': 'show_chart': 'group': 'empresa'},
+                    'Requisito': {'icon': 'playlist_add_check': 'group': 'empresa'},
+                    'Empleado': {'icon': 'face': 'group': 'empresa'},
+                    'Jefes': {'icon': 'supervisor_account': 'group': 'empresa'},
+                    'Contrato': {'icon': 'library_books': 'group': 'empresa'},
+                    'Asistencia': {'icon': 'spellcheck': 'group': 'empresa'},
+                    'HorasExtra': {'icon': 'alarm_add': 'group': 'empresa'},
+                    'LiquidacionNomina': {'icon': 'attach_money': 'group': 'empresa'},
                 },
             }, 'riesgo': {
                 'icon': 'settings',
