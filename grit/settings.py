@@ -89,7 +89,7 @@ EXILE_UI = {
                     'Anio': {'icon': 'date_range', 'group': 'Empresa'},
                     'Empresa': {'icon': 'business', 'group': 'Empresa'},
                     'Departamento': {'icon': 'view_compact', 'group': 'Empresa'},
-                    'Cargo': {'icon': 'show_chart', 'group': 'Empresa'},
+                    'Cargo': {'icon': 'assignment_ind', 'group': 'Empresa'},
                     'Requisito': {'icon': 'playlist_add_check', 'group': 'Empresa'},
                     'Empleado': {'icon': 'face', 'group': 'Empresa'},
                     'Jefes': {'icon': 'supervisor_account', 'group': 'Empresa'},
@@ -101,9 +101,15 @@ EXILE_UI = {
             }, 'riesgo': {
                 'icon': 'settings',
                 'groups': [
+                    'Riesgo'
                 ],
                 'models': {
-                    'ElementoProteger': {}
+                    'Criticidad': {'icon': '', 'group': 'Riesgo'}
+                    'ElementoProteger': {'icon': '', 'group': 'Riesgo'}
+                    'CargoRiesgo': {'icon': '', 'group': 'Riesgo'}
+                    'Riesgo': {'icon': '', 'group': 'Riesgo'}
+                    'EvaluacionEmpresa': {'icon': '', 'group': 'Riesgo'}
+                    'EvaluacionRiesgos': {'icon': '', 'group': 'Riesgo'}
                 },
             }, 'norma': {
                 'icon': 'settings',
@@ -161,8 +167,19 @@ MENU_ORDER = [
     {
         'name': 'empresa',
         'models': [
+            'Configuracion',
+            'Calculos',
+            'Anio',
+            'Empresa',
+            'Departamento',
+            'Cargo',
+            'Requisito',
+            'Empleado',
+            'Jefes',
+            'Contrato',
             'Asistencia',
-            'User'
+            'HorasExtra',
+            'LiquidacionNomina',
         ]
     }, {
         'name': 'riesgo',
