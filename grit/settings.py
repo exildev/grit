@@ -148,13 +148,13 @@ EXILE_UI = {
             },
             'notficacion':{
                 'groups': [
-                    'Notificación'
+                    'Notificacion'
                 ],
                 'models': {
-                    'Recordatorio': {'icon': 'alarm', 'gruop': 'Notificación'},
-                    'Periodicidad': {'icon': 'linear scale', 'gruop': 'Notificación'},
-                    'Aviso': {'icon': 'add_alert', 'gruop': 'Notificación'},
-                    'Revision': {'icon': 'check', 'gruop': 'Notificación'},
+                    'Recordatorio': {'icon': 'alarm', 'gruop': 'Notificacion'},
+                    'Periodicidad': {'icon': 'linear scale', 'gruop': 'Notificacion'},
+                    'Aviso': {'icon': 'add_alert', 'gruop': 'Notificacion'},
+                    'Revision': {'icon': 'check', 'gruop': 'Notificacion'},
                 }
             }
             'logout': {
