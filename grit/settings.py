@@ -59,8 +59,8 @@ EXILE_UI = {
     'media': {
         'logo': {
             'dashboard': '/media/piscix_logo/Icono-f-t.png',
-            'page': '/media/piscix_logo/Icono-200px.png',
-            'login': '/media/piscix_logo/Icono-s-t.png'
+            'page': '/media/grit_logo/isotipo-grit.png',
+            'login': '/media/grit_logo/logo-grit.png'
         },
         'icons': {
             'formulario': {
