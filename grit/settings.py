@@ -122,7 +122,7 @@ EXILE_UI = {
                     'Formato': {'icon':'receipt', 'group': 'Norma'}
                 }
             }, 'epc': {
-                'icon': 'settings',
+                'icon': 'folder_open',
                 'groups': [
                     'EPC'
                 ],
