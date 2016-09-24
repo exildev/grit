@@ -299,5 +299,5 @@ USE_TZ = True
 
 STATIC_ROOT = '/var/www/grit/static/'
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/var/www/grit/media/'
+MEDIA_ROOT = '/var/www/grit/grit/media/'
 MEDIA_URL = '/media/'
