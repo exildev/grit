@@ -58,7 +58,7 @@ EXILE_UI = {
     'index_title': 'Proyect planning',
     'media': {
         'logo': {
-            'dashboard': '/media/piscix_logo/Icono-f-t.png',
+            'dashboard': '/media/piscix_logo/logo-grit.png',
             'page': '/media/grit_logo/isotipo-grit.png',
             'login': '/media/grit_logo/logo-grit.png'
         },
