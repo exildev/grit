@@ -4,10 +4,24 @@ import models
 import widgets
 from datetime import datetime
 
+
+class OrdenTrabajoForm(forms.ModelForm):
+	class Meta:
+		model = models.OrdenTrabajo
+		exclude = []
+		widgets = {
+            "fecha_de_ejecucion": DatePickerWidget(attrs={'class': 'date'}, format="%m/%d/%Y")
+        }
+    # end class
+# end class
+
 class ActividadForm(forms.ModelForm):
 	class Meta:
 		model = models.Actividad
 		exclude = []
+		widgets = {
+            "fecha_estimada": DatePickerWidget(attrs={'class': 'date'}, format="%m/%d/%Y")
+        }
 	#end class
 
 	def save(self, commit=True):

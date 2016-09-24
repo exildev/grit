@@ -1,5 +1,6 @@
 # -*- encoding: utf8 -*-
 from exile_ui.admin import admin_site
+from exile_ui.admin import admin_site, ExStacked, ExTabular, DateRangeEX, DateRangeEX
 from django.contrib import admin
 import models
 import forms
@@ -31,6 +32,7 @@ class ActividadInline(admin.StackedInline):
 class OrdenTrabajoAdmin(admin.ModelAdmin):
 	inlines = [AdquisiscionMaterialInline, ActividadInline, ProgresoGraficoInline]
 	readonly_fields = ['fecha_creacion']
+	form = forms.OrdenTrabajoForm
 # end class
 
 class OrdenTrabajoInline(admin.StackedInline):
