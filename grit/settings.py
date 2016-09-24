@@ -53,9 +53,9 @@ INSTALLED_APPS = [
 ]
 
 EXILE_UI = {
-    'site_title': 'Rondax',
-    'site_header': 'Rondax',
-    'index_title': 'Software para las rondas operativos',
+    'site_title': 'Grit',
+    'site_header': 'Grit',
+    'index_title': 'Proyect planning',
     'media': {
         'logo': {
             'dashboard': '/media/piscix_logo/Icono-f-t.png',
