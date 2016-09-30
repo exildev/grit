@@ -73,20 +73,20 @@ class EvaluacionRiesgos(models.Model):
         (3, 'Alto'),
         (4, 'Extremo')
     )
-    empresa = models.ForeignKey(EvaluacionEmpresa)
-    riesgo  = models.ForeignKey(Riesgo)
-    fuente  = models.TextField()
-    medio   = models.TextField()
-    persona = models.TextField()
-    metodo  = models.TextField()
+    empresa = models.ForeignKey(EvaluacionEmpresa, null=True, blank=True)
+    riesgo  = models.ForeignKey(Riesgo, null=True, blank=True)
+    fuente  = models.TextField(null=True, blank=True)
+    medio   = models.TextField(null=True, blank=True)
+    persona = models.TextField(null=True, blank=True)
+    metodo  = models.TextField(null=True, blank=True)
 
-    probabilidad  = models.IntegerField(choices=probabilidades)
-    consecuencia  = models.IntegerField(choices=consecuencias)
+    probabilidad  = models.IntegerField(choices=probabilidades, null=True, blank=True)
+    consecuencia  = models.IntegerField(choices=consecuencias, null=True, blank=True)
 
-    controles_administrativos = models.TextField()
-    controles_operacionales   = models.TextField()
-    controles_talentoHumano   = models.TextField()
-    controles_instalacion     = models.TextField()
+    controles_administrativos = models.TextField(null=True, blank=True)
+    controles_operacionales   = models.TextField(null=True, blank=True)
+    controles_talentoHumano   = models.TextField(null=True, blank=True)
+    controles_instalacion     = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
         return u'%s' % (self.riesgo.amenaza, )

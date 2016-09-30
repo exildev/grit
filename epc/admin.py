@@ -29,6 +29,11 @@ class ActividadInline(admin.StackedInline):
 	extra = 0
 # end class
 
+class ActividadAdmin(admin.ModelAdmin):
+	form = forms.ActividadForm
+	readonly_fields = ['fecha_completado', 'desface']
+# end class
+
 class OrdenTrabajoAdmin(admin.ModelAdmin):
 	inlines = [AdquisiscionMaterialInline, ActividadInline, ProgresoGraficoInline]
 	readonly_fields = ['fecha_creacion']
@@ -50,5 +55,5 @@ admin_site.register(models.Contrato)
 admin_site.register(models.TipoAdquisiscion)
 admin_site.register(models.Material)
 admin_site.register(models.OrdenTrabajo, OrdenTrabajoAdmin)
-admin_site.register(models.Actividad)
+admin_site.register(models.Actividad, ActividadAdmin)
 admin_site.register(models.Proyecto, ProyectoAdmin)

@@ -1,0 +1,85 @@
+<button class="btn_change" type="button">Cambiar</button>
+<div class="modal" >
+	<div class="card">
+		<h2>Nuevo texto</h2>
+		<div class="area">
+			<textarea name="{{name}}">{{value}}</textarea>
+		</div>
+		<div class="btns">
+			<button class="ok">Aceptar</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	(function () {
+		var btns = document.querySelectorAll('.btn_change');
+		btns.forEach(function(btn) {
+			btn.addEventListener('click', btn_change, false);
+		});
+	})();
+	function btn_change(e) {
+		var modal = e.target.nextElementSibling;
+		var card = modal.querySelector('.card');
+		var ok = card.querySelector('.ok');
+		if(!modal.classList.contains('open')){
+			modal.classList.add('open');
+		}
+		modal.onclick = function(e){
+			modal.classList.remove('open');
+			e.preventDefault();
+		}
+		card.onclick= function(e){
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		ok.onclick = function(e){
+			modal.classList.remove('open');
+			e.preventDefault();
+		}
+	}
+</script>
+<style type="text/css">
+	div.modal{
+		display: none;
+	}
+	div.modal.open{
+		display: flex;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		background: rgba(0, 0, 0, .4);
+		align-self: center;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+	}
+	div.card{
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+		background-color: white;
+		max-height: 700px;
+		min-height: 400px;
+		overflow: auto;
+		min-width: 500px;
+		max-width: 1200px;
+		border-radius: 3px;
+	}
+	div.card .area{
+		width: calc(100% - 32px);
+		padding: 16px;
+		height: 250px;
+	}
+	div.card .area textarea{
+		resize: none;
+		width: 100%;
+		height: 100%;
+	}
+	div.btns{
+		display: flex;
+		padding: 16px;
+		align-items: center;
+    	justify-content: flex-end;
+	}
+</style>
