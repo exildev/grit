@@ -27,9 +27,6 @@ SECRET_KEY = '%5wxfnksebk2eou(wdi&czg#_vn#q8or*bwudv&4#^84u#&pmw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nested_admin',
     'grit',
     'empresa',
     'empresa.riesgo',
     'norma',
     'norma.formulario',
-    'notificacion',
     'usr',
     'validable',
     'epc',
@@ -236,6 +233,8 @@ MENU_ORDER = [
     }
 ]
 
+ALLOWED_HOSTS = ['192.168.0.101']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -244,6 +243,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cuser.middleware.CuserMiddleware'
 ]
 
 ROOT_URLCONF = 'grit.urls'
@@ -275,8 +275,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'grit',
         'USER': 'postgres',
-        'PASSWORD': 'Exile*74522547',
-        'HOST': '104.236.33.228',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }

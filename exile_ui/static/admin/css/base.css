@@ -823,3 +823,7 @@ table#change-history tbody th {
   height: 60px;
   border-radius: 50%;
 }
+
+td.original p {
+    margin-top: -30px;
+}

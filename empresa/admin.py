@@ -42,9 +42,12 @@ class DepartamentoAdmin(admin.ModelAdmin):
     #end def
 
     def get_queryset(self, request):
-        qs = super(DepartamentoAdmin, self).get_queryset(request)
+        queryset = super(DepartamentoAdmin, self).get_queryset(request)
         user = CuserMiddleware.get_user()
-        return qs.filter(empresa__empresa = user)
+        if not request.user.is_superuser:
+            queryset = queryset.filter(empresa__empresa = user)
+        # end if
+        return queryset
     #end def
 #end class
 
@@ -74,9 +77,12 @@ class CargoAdmin(admin.ModelAdmin):
     #raw_id_fields = ('departamento', )
     
     def get_queryset(self, request):
-        qs = super(CargoAdmin, self).get_queryset(request)
+        queryset = super(CargoAdmin, self).get_queryset(request)
         user = CuserMiddleware.get_user()
-        return qs.filter(departamento__empresa__empresa = user)
+        if not request.user.is_superuser:
+            queryset = queryset.filter(departamento__empresa__empresa = user)
+        # end if
+        return queryset
     #end def
 #end class
 

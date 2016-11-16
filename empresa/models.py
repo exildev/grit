@@ -88,7 +88,7 @@ class Cargo(models.Model):
     activo = models.BooleanField(default=True)
     descripcion  = models.TextField()
     departamento = models.ForeignKey(Departamento)
-    salario = models.DecimalField(max_digits=20, decimal_places=2)
+    salario = models.DecimalField(max_digits=20, decimal_places=3)
     #perfil = models.ForeignKey(Perfil)
 
     def __unicode__(self):
@@ -187,16 +187,16 @@ class LiquidacionNomina(models.Model):
     fecha_corte = models.DateField()
 
     dias = models.IntegerField(verbose_name="Dias trabajados")
-    cesa = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Cesantias acumuladas")
-    intc = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Intereses sobre cesantias acumulados")
-    prim = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Primas de servicio acumuladas")
-    hord = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas ordinarias")
+    cesa = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Cesantias acumuladas $")
+    intc = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Intereses sobre cesantias acumulados $")
+    prim = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Primas de servicio acumuladas $")
+    hord = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas ordinarias $")
 
-    hexd = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras diurnas")
-    hexn = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras nocturnas")
-    hxdd = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras diurnas dominicales")
-    hxnd = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras nocturnas dominicales")
-    totl = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Total devengado")
+    hexd = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras diurnas $")
+    hexn = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras nocturnas $")
+    hxdd = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras diurnas dominicales $")
+    hxnd = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Horas extras nocturnas dominicales $")
+    totl = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True, verbose_name="Total devengado $")
 
     def __unicode__(self):
         return u'%s' % (self.empleado,)

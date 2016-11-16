@@ -1,0 +1,11 @@
+<input type="hidden" name="{{name}}" value="{{value}}">
+<script type="text/javascript">
+	var rule = $('[name="{{name}}"]').parents("table")[0];
+	$(rule).addClass("sortable");
+	sortable(function () {
+		var item = $('[name="{{name}}"]').parents('tbody')[0];
+		$('[name="{{name}}"]').val($(item).index());
+	});
+	var item = $('[name="{{name}}"]').parents('tbody')[0];
+	$('[name="{{name}}"]').val($(item).index());
+</script>

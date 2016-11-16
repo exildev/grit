@@ -4,6 +4,8 @@ from exile_ui.widgets import DatePickerWidget
 import models
 import widgets
 from datetime import datetime
+from usr.models import Empleado as EmpleadoU
+from norma.formulario.models import Registro
 
 
 class OrdenTrabajoForm(forms.ModelForm):
@@ -11,7 +13,8 @@ class OrdenTrabajoForm(forms.ModelForm):
 		model = models.OrdenTrabajo
 		exclude = []
 		widgets = {
-            "fecha": DatePickerWidget(attrs={'class': 'date'})
+            "fecha": DatePickerWidget(attrs={'class': 'date'}),
+            "dependencias": widgets.DependenceWidget()
         }
     # end class
 # end class
@@ -19,19 +22,51 @@ class OrdenTrabajoForm(forms.ModelForm):
 class ActividadForm(forms.ModelForm):
 	class Meta:
 		model = models.Actividad
-		exclude = []
+		exclude = ['registro']
 		widgets = {
-            "fecha_estimada": DatePickerWidget(attrs={'class': 'date'})
+			'poscicion': widgets.OrdenableWidget()
         }
+	#end class
+
+	#def __init__(self, *args, **kwargs):
+	#	super(ActividadForm, self).__init__()
+	# end def
+
+	def save(self, commit=True):
+		obj = super(ActividadForm, self).save(commit)
+		if obj.completado and not obj.fecha_completado:
+			obj.fecha_completado = datetime.now()
+		# end if
+		if obj.formato and obj.orden.personal.empleado:
+			user = EmpleadoU.objects.filter(_empleado=obj.orden.personal.empleado).first()
+			if user:
+				registro = Registro(formulario=obj.formato, empleado=user)
+				registro.save()
+				obj.registro = registro
+			# end if
+		# end if
+		obj.save()
+		return obj
+	# end def
+
+# end class
+
+
+class ActividadUserForm(forms.ModelForm):
+	class Meta:
+		model = models.Actividad
+		exclude = ['formato', 'poscicion']
+		widgets = {
+			'registro': widgets.FillFormatWidget()
+		}
 	#end class
 
 	def save(self, commit=True):
 		obj = super(ActividadForm, self).save(commit)
-		if obj.completado:
+		if obj.completado and not obj.fecha_completado:
 			obj.fecha_completado = datetime.now()
-		else:
-			obj.fecha_completado = None
 		# end if
+
 		obj.save()
 		return obj
 	# end def

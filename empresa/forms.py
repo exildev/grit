@@ -67,7 +67,11 @@ class EmpleadoForm(forms.ModelForm):
 		obj = super(EmpleadoForm, self).save(False)
 		user = CuserMiddleware.get_user()
 		#obj.empresa = Empresa.objects.filter(empresa = user).first()
-		g = Group.objects.get(name='empleado') 
+		g, create = Group.objects.get_or_create(name='empleado') 
+		if create:
+			#configure g
+			pass
+		# end if
 		g.user_set.add(user)
 		return super(EmpleadoForm, self).save(commit)
 	#end if
@@ -112,7 +116,7 @@ class ContratoForm(forms.ModelForm):
 #end class
 
 class NominaForm(forms.ModelForm):
-
+	#http://www.gerencie.com/formulas-utilizadas-en-la-liquidacion-de-la-nomina.html
 	def save(self, commit):
 		obj = super(NominaForm, self).save(commit=False)
 
@@ -123,7 +127,7 @@ class NominaForm(forms.ModelForm):
 
 		contrato = Contrato.objects.filter(empleado = obj.empleado).last()
 		ultima_nomina = LiquidacionNomina.objects.filter(fecha_corte__lt=obj.fecha_corte, empleado=obj.empleado, contrato = contrato).last()
-		primara_nomina = LiquidacionNomina.objects.filter(fecha_corte__lt=obj.fecha_corte, empleado=obj.empleado, semestre=obj.semestre, fecha_corte__year = today.year).first()
+		primera_nomina = LiquidacionNomina.objects.filter(fecha_corte__lt=obj.fecha_corte, empleado=obj.empleado, semestre=obj.semestre, fecha_corte__year = today.year).first()
 
 		if ultima_nomina:
 			fecha_anterior = ultima_nomina.fecha_corte			
@@ -133,8 +137,8 @@ class NominaForm(forms.ModelForm):
 		
 		dias = (obj.fecha_corte - fecha_anterior).days
 
-		if primara_nomina:
-			fecha_primera_nomina = primara_nomina.fecha_corte
+		if primera_nomina:
+			fecha_primera_nomina = primera_nomina.fecha_corte
 		else:
 			fecha_primera_nomina = contrato.fecha_inicio
 		#end def

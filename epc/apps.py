@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class EpcConfig(AppConfig):
-    name = 'epc'
+    name = 'Proyectos'

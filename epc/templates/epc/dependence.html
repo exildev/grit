@@ -1,0 +1,21 @@
+<style type="text/css">
+	.selectize-input{
+		width: 200px;
+	}
+	.related-widget-wrapper {
+	    overflow: inherit;
+	}
+	.field-{{name}}{
+		overflow: inherit;
+    	height: 55px;
+	}
+</style>
+
+<select id="select-state" name="{{name}}" multiple class="demo-default" style="width:50%" placeholder="Seleccione un {{name}}...">
+	{% for choice in choices %}
+	<option value="{{choice.pk}}">{{choice}}</option>
+	{% endfor %}}
+</select>
+<script>
+	$('#select-state').selectize({});
+</script>

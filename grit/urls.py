@@ -13,4 +13,6 @@ urlpatterns = [
     #url(r'^empresa/', include('empresa.urls')),
     #url(r'^norma/', include('norma.urls')),
     #url(r'^notificacion/', include('notificacion.urls')),
+    
+    url(r'^nested_admin/', include('nested_admin.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

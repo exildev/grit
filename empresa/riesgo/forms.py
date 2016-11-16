@@ -51,9 +51,6 @@ class EvaluacionRiesgosForm(forms.ModelForm):
 		}
 	#end class
 
-	def riesgo_choices(self):
-		return self.get_riesgo_display()
-	#end def
 #end class
 
 class EvaluacionEmpresaForm(forms.ModelForm):
