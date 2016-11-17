@@ -1,6 +1,8 @@
 # -*- encoding: utf8 -*-
 from exile_ui.admin import admin_site
 from exile_ui.admin import admin_site, ExStacked, ExTabular, DateRangeEX, DateRangeEX
+from usr.models import Empleado as EmpleadoU
+from cuser.middleware import CuserMiddleware
 from django.contrib import admin
 import nested_admin
 import models
@@ -26,9 +28,21 @@ class AdquisiscionMaterialInline(ExTabular):
 class ActividadInline(ExTabular):
 	model = models.Actividad
 	readonly_fields = ['fecha_estimada', 'desface'] #'fecha_completado', 
-	form = forms.ActividadForm
-	extra = 0
 	
+	extra = 0
+
+	def get_formset(self, request, obj=None, fields=None):
+		self.form = forms.ActividadForm
+		if obj and obj.personal.empleado:
+			user = CuserMiddleware.get_user()
+			empleado = EmpleadoU.objects.filter(_empleado=obj.personal.empleado).first()
+			if user.pk == empleado.pk:
+				print user, empleado
+				self.form = forms.ActividadUserForm
+			# end if
+		# end if
+		return super(ActividadInline, self).get_formset(request=request, obj=obj, fields=fields)
+	# end def
 
 	def get_queryset(self, request):
 		queryset = super(ActividadInline, self).get_queryset(request)

@@ -28,10 +28,6 @@ class ActividadForm(forms.ModelForm):
         }
 	#end class
 
-	#def __init__(self, *args, **kwargs):
-	#	super(ActividadForm, self).__init__()
-	# end def
-
 	def save(self, commit=True):
 		obj = super(ActividadForm, self).save(commit)
 		if obj.completado and not obj.fecha_completado:
