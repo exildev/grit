@@ -1,2 +1,14 @@
-{% load url %}
-<a href="{% url 'admin:registro_choice_change' value %}" target="_blank">Completar Formato</a>
+{% load static %}
+{% if value %}
+<!--a href="{% url 'admin:formulario_registro_change' value %}" class="related-lookup" target="_blank">Completar Formato</a-->
+
+
+<a class="related-widget-wrapper-link add-related" id="format_{{name}}" data-href-template="/formulario/registro/__fk__/change/?_to_field=id&amp;_popup=1" title="Completar formulario seleccionado" href="{% url 'admin:formulario_registro_change' value %}?_to_field=id&amp;_popup=1">
+            Completar Formato
+        </a>
+<script type="text/javascript">
+	$('body').on('change', '#format_{{name}}', function(e) {
+    	$(this).text("Editar Formato");
+	});
+</script>
+{% endif %}

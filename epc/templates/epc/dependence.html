@@ -1,6 +1,6 @@
 <style type="text/css">
 	.selectize-input{
-		width: 200px;
+		width: 150px;
 	}
 	.related-widget-wrapper {
 	    overflow: inherit;
@@ -10,12 +10,12 @@
     	height: 55px;
 	}
 </style>
-
-<select id="select-state" name="{{name}}" multiple class="demo-default" style="width:50%" placeholder="Seleccione un {{name}}...">
+{{value}}
+<select id="select-state{{name}}" name="{{name}}" multiple class="demo-default" style="width:50%" placeholder="Seleccione un...">
 	{% for choice in choices %}
 	<option value="{{choice.pk}}">{{choice}}</option>
 	{% endfor %}}
 </select>
 <script>
-	$('#select-state').selectize({});
+	$('#select-state{{name}}').selectize({});
 </script>

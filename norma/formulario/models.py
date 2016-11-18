@@ -44,11 +44,34 @@ class Campo(models.Model):
 #end class
 
 class Registro(models.Model):
+	correccion_de = models.OneToOneField('Revision', blank=True, null=True, related_name='correccion')
 	formulario = models.ForeignKey(Formulario)
 	empleado = models.ForeignKey(usr.Empleado)
+	revisor = models.ForeignKey(usr.Empleado, related_name="revisor")
 	completado = models.BooleanField(default=False, blank=True)
 	fecha = models.DateTimeField(null=True, blank=True)
+
+	def aprovado(self):
+		revision = Revision.objects.filter(registro=self).last()
+		if revision:
+			return revision.revision
+		# end if
+		return None
+	# end def
 #end class
+
+class Revision(models.Model):
+	CHOICES = (
+		(None, 'Pendiente'),
+		(True, 'Arobado'),
+		(False, 'Rechazado' ),
+	)
+	registro = models.OneToOneField(Registro)
+	fecha = models.DateTimeField(auto_now_add=True)
+	revision = models.NullBooleanField(default=None, choices=CHOICES)
+	comentario = models.TextField()
+# end class
+	
 
 class Valor(models.Model):
 	tipo  = models.ForeignKey(Tipo)

@@ -64,6 +64,7 @@ class OrdenTrabajo(models.Model):
 	nombre_corto = models.CharField(max_length=45)
 	proyecto = models.ForeignKey(Proyecto)
 	personal = models.ForeignKey(Personal)
+	revisor = models.ForeignKey(Personal, related_name="revisor")
 	materiales = models.ManyToManyField(Material, through=AdquisiscionMaterial)
 	fecha = models.DateField()
 	fecha_creacion = models.DateField(auto_now_add=True)

@@ -7,6 +7,13 @@ import forms
 class CampoInline(admin.TabularInline):
 	model = models.Campo
 	form = forms.CampoForm
+# end class
+
+class RevisionInline(admin.StackedInline):
+	model = models.Revision
+	form = forms.CampoForm
+	extra = 1
+# end class
 
 class FormularioAdmin(admin.ModelAdmin):
 	search_fields = ('nombre', 'fecha')
@@ -18,6 +25,7 @@ class FormularioAdmin(admin.ModelAdmin):
 #end class
 
 class RegistroAdmin(admin.ModelAdmin):
+	inlines = [RevisionInline]
 	model = models.Registro
 	search_fields = ('formulario__nombre', 'empleado___empleado__nombre', 'empleado___empleado__apellido', 'fecha')
 	list_filter = ('formulario', 'completado', 'fecha')
@@ -40,6 +48,7 @@ class RegistroAdmin(admin.ModelAdmin):
 
 
 admin_site.register(models.Tipo)
+#admin_site.register(models.Campo)
 #admin_site.register(models.Campo)
 admin_site.register(models.Formulario, FormularioAdmin)
 #admin_site.register(models.Valor)

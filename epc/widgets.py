@@ -4,6 +4,7 @@ from django.utils.safestring import mark_safe
 from django.forms import ModelForm
 from sorl.thumbnail import get_thumbnail
 from django.template.loader import render_to_string
+from norma.formulario.models import Registro
 import models
 
 
@@ -121,6 +122,7 @@ class FillFormatWidget(forms.Widget):
     # end def
 
     def render(self, name, value, attrs=None):
+        #registro = Registro.objects.filter(pk = value).first()
         return render_to_string("epc/fillformat.html", {'name': name, 'value': value})
     # end def
 

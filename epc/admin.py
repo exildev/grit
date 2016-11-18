@@ -27,13 +27,14 @@ class AdquisiscionMaterialInline(ExTabular):
 
 class ActividadInline(ExTabular):
 	model = models.Actividad
-	readonly_fields = ['fecha_estimada', 'desface'] #'fecha_completado', 
+	readonly_fields = ['fecha_completado', 'fecha_estimada', 'desface'] #
 	
 	extra = 0
 
 	def get_formset(self, request, obj=None, fields=None):
 		self.form = forms.ActividadForm
-		if obj and obj.personal.empleado:
+
+		if obj and hasattr(obj, 'personal') and obj.personal.empleado:
 			user = CuserMiddleware.get_user()
 			empleado = EmpleadoU.objects.filter(_empleado=obj.personal.empleado).first()
 			if user.pk == empleado.pk:
@@ -63,7 +64,7 @@ class OrdenTrabajoAdmin(nested_admin.NestedModelAdmin):
 
 class OrdenTrabajoInline(nested_admin.NestedTabularInline):
 	model = models.OrdenTrabajo
-	#form = forms.OrdenTrabajoForm
+	form = forms.OrdenTrabajoForm
 	#readonly_fields = ['fecha_final_estimada', 'fecha_final_real', ]
 	inlines = [ActividadInline, AdquisiscionMaterialInline, ProgresoGraficoInline]
 	extra = 0

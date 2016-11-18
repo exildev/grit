@@ -6,6 +6,7 @@ import widgets
 from datetime import datetime
 from usr.models import Empleado as EmpleadoU
 from norma.formulario.models import Registro
+from django.core.exceptions import ValidationError
 
 
 class OrdenTrabajoForm(forms.ModelForm):
@@ -13,10 +14,17 @@ class OrdenTrabajoForm(forms.ModelForm):
 		model = models.OrdenTrabajo
 		exclude = []
 		widgets = {
-            "fecha": DatePickerWidget(attrs={'class': 'date'}),
-            "dependencias": widgets.DependenceWidget()
+            #"fecha": DatePickerWidget(attrs={'class': 'date'}),
+            #"dependencias": widgets.DependenceWidget()
         }
     # end class
+
+	def clean(self):
+		if self.cleaned_data['personal'] == self.cleaned_data['revisor']:
+			raise ValidationError('El personal y el revisor no pueden ser iguales')
+		# end if
+		return self.cleaned_data
+	# end def
 # end class
 
 class ActividadForm(forms.ModelForm):
@@ -52,13 +60,15 @@ class ActividadUserForm(forms.ModelForm):
 	class Meta:
 		model = models.Actividad
 		exclude = ['formato', 'poscicion']
-		widgets = {
-			'registro': widgets.FillFormatWidget()
-		}
 	#end class
 
+	def __init__(self, *args, **kwargs):
+		super(ActividadUserForm, self).__init__(*args, **kwargs)
+		self.fields['registro'].widget = widgets.FillFormatWidget()
+	# end def
+
 	def save(self, commit=True):
-		obj = super(ActividadForm, self).save(commit)
+		obj = super(ActividadUserForm, self).save(commit)
 		if obj.completado and not obj.fecha_completado:
 			obj.fecha_completado = datetime.now()
 		# end if
