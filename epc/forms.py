@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms 
-from exile_ui.widgets import DatePickerWidget
+from exileui.widgets import DatePickerWidget
 import models
 import widgets
 from datetime import datetime

@@ -30,7 +30,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-    'exile_ui',
+    'exileui',
     'cuser',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -114,9 +114,9 @@ EXILE_UI = {
                     'Norma'
                 ],
                 'models': {
-                    'Norma': {'icon':'assignment', 'group': 'Norma'},
-                    'Item': {'icon':'list', 'group': 'Norma'},
-                    'Formato': {'icon':'receipt', 'group': 'Norma'}
+                    'Norma': {'icon': 'assignment', 'group': 'Norma'},
+                    'Item': {'icon': 'list', 'group': 'Norma'},
+                    'Formato': {'icon': 'receipt', 'group': 'Norma'}
                 }
             }, 'epc': {
                 'icon': 'folder_open',
@@ -131,6 +131,8 @@ EXILE_UI = {
                     'Actividad': {'group': 'EPC', 'icon': 'access_time'},
                     'Proyecto': {'group': 'EPC', 'icon': 'folder_open'},
                     'TipoAdquisiscion': {'group': 'EPC', 'icon': 'toys'},
+                    'Grupo': {'group': 'EPC', 'icon': 'toys'},
+                    'Personal': {'group': 'EPC', 'icon': 'toys'}
                 }
             },
             'auth': {
@@ -173,7 +175,8 @@ MENU_ORDER = [
             'Valor',
             'Entrada',
         ]
-    },{
+    },
+    {
         'name': 'notificacion',
         'models': [
             'Recordatorio',
@@ -233,7 +236,7 @@ MENU_ORDER = [
     }
 ]
 
-ALLOWED_HOSTS = ['192.168.0.101']
+ALLOWED_HOSTS = ['localhost']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

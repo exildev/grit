@@ -1,4 +1,4 @@
-from exile_ui.admin import admin_site
+from exileui.admin import exileui
 from django.contrib import admin
 import unicodedata
 import models
@@ -39,9 +39,9 @@ class RegistroAdmin(admin.ModelAdmin):
 #end class
 
 
-admin_site.register(models.Tipo)
-#admin_site.register(models.Campo)
-admin_site.register(models.Formulario, FormularioAdmin)
-#admin_site.register(models.Valor)
-#admin_site.register(models.Entrada)
-admin_site.register(models.Registro, RegistroAdmin)
+exileui.register(models.Tipo)
+#exileui.register(models.Campo)
+exileui.register(models.Formulario, FormularioAdmin)
+#exileui.register(models.Valor)
+#exileui.register(models.Entrada)
+exileui.register(models.Registro, RegistroAdmin)

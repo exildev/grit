@@ -1,4 +1,4 @@
-from exile_ui.admin import admin_site
+from exileui.admin import exileui
 from django.contrib import admin
 from models import Norma, Item, Formato
 from forms import NormaForm, ItemForm, FormatoForm
@@ -24,6 +24,6 @@ class AdminFormato(admin.ModelAdmin):
 #end class
 
 
-admin_site.register(Norma, AdminNorma)
-admin_site.register(Item, AdminItem)
-admin_site.register(Formato, AdminFormato)
+exileui.register(Norma, AdminNorma)
+exileui.register(Item, AdminItem)
+exileui.register(Formato, AdminFormato)

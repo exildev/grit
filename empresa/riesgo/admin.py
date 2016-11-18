@@ -1,4 +1,4 @@
-from exile_ui.admin import admin_site
+from exileui.admin import exileui
 from django.contrib import admin
 import models
 import forms
@@ -21,9 +21,9 @@ class EvaluacionEmpresaAdmin(admin.ModelAdmin):
 	# end def
 # end class
 
-admin_site.register(models.Criticidad)
-admin_site.register(models.ElementoProteger)
-admin_site.register(models.CargoRiesgo)
-admin_site.register(models.Riesgo)
-admin_site.register(models.EvaluacionRiesgos)
-admin_site.register(models.EvaluacionEmpresa, EvaluacionEmpresaAdmin)
+exileui.register(models.Criticidad)
+exileui.register(models.ElementoProteger)
+exileui.register(models.CargoRiesgo)
+exileui.register(models.Riesgo)
+exileui.register(models.EvaluacionRiesgos)
+exileui.register(models.EvaluacionEmpresa, EvaluacionEmpresaAdmin)
