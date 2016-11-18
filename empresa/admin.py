@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from exile_ui.admin import admin_site
+from exileui.admin import exileui
 from django.contrib import admin
 import forms
 from django.db.models import Q
@@ -75,7 +75,7 @@ class CargoAdmin(admin.ModelAdmin):
     list_filter   = ('nombre', 'departamento', 'salario')
     inlines       = (RequisitoStacked, )
     #raw_id_fields = ('departamento', )
-    
+
     def get_queryset(self, request):
         queryset = super(CargoAdmin, self).get_queryset(request)
         user = CuserMiddleware.get_user()
@@ -104,7 +104,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
         #end if
         return []
     #end def
-    
+
     def get_form(self, request, obj=None, **kwargs):
         if obj != None and obj.cargo != None:
             self.form =  forms.EmpleadoEditForm
@@ -159,15 +159,15 @@ class LiquidacionNominaAdmin(admin.ModelAdmin):
     #end def
 #end class
 
-admin_site.register(empresa.Asistencia)
-admin_site.register(empresa.HorasExtra)
-admin_site.register(empresa.Configuracion)
-admin_site.register(empresa.LiquidacionNomina, LiquidacionNominaAdmin)
-admin_site.register(empresa.Calculos)
-admin_site.register(empresa.Empresa, EmpresaAdmin)
-admin_site.register(empresa.Departamento, DepartamentoAdmin)
-#admin_site.register(empresa.Requisito, RequisitoAdmin)
-admin_site.register(empresa.Cargo, CargoAdmin)
-admin_site.register(empresa.Empleado, EmpleadoAdmin)
-admin_site.register(empresa.Contrato, ContratoAdmin)
-#admin_site.register(empresa.Jefes, JefesAdmin)
+exileui.register(empresa.Asistencia)
+exileui.register(empresa.HorasExtra)
+exileui.register(empresa.Configuracion)
+exileui.register(empresa.LiquidacionNomina, LiquidacionNominaAdmin)
+exileui.register(empresa.Calculos)
+exileui.register(empresa.Empresa, EmpresaAdmin)
+exileui.register(empresa.Departamento, DepartamentoAdmin)
+#exileui.register(empresa.Requisito, RequisitoAdmin)
+exileui.register(empresa.Cargo, CargoAdmin)
+exileui.register(empresa.Empleado, EmpleadoAdmin)
+exileui.register(empresa.Contrato, ContratoAdmin)
+#exileui.register(empresa.Jefes, JefesAdmin)
