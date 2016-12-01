@@ -1,74 +1,89 @@
 <input type="hidden" name="{{name}}" value="{{value}}">
-<canvas id="chart_{{name}}" width="400" height="200"></canvas>
+<div style="width:1024px; height:600px; margin: 0 auto;">
+    <canvas id="chart_{{name}}"></canvas>
+</div>
 <script>
-var ctx = document.getElementById("chart_{{name}}");
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [
-            {% for a in actividades %}
-                "{{a.nombre}}"{% if not forloop.last %},{% endif %}
+window['ctx_{{name}}'] = document.getElementById("chart_{{name}}");
+window['dataset_{{name}}'] = [
+    {
+        label: 'Estimación',
+        data: [
+            {% for est in ests %}
+                {{est}}{% if not forloop.last %},{% endif %}
             {% endfor %}
         ],
-        datasets: [{
-            label: 'Estimación',
-            data: [
-                {% for est in ests %}
-                    {{est}}{% if not forloop.last %},{% endif %}
-                {% endfor %}
-            ],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        },{
-            label: 'Real',
-            data: [
-                {% for real in reals %}
-                    {{real}}{% if not forloop.last %},{% endif %}
-                {% endfor %}
-            ],
-            backgroundColor: [
-                'rgba(99, 255, 132, 0.2)',
-                'rgba(162, 54, 235, 0.2)',
-                'rgba(206, 255, 86, 0.2)',
-                'rgba(192, 75, 192, 0.2)',
-                'rgba(102, 153, 255, 0.2)',
-                'rgba(159, 255, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(99, 255,132,1)',
-                'rgba(162, 54, 235, 1)',
-                'rgba(206, 255, 86, 1)',
-                'rgba(192, 75, 192, 1)',
-                'rgba(102, 153, 255, 1)',
-                'rgba(159, 255, 64, 1)'
-            ],
-            borderWidth: 1
-        }
-        ]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+    },{
+        label: 'Real',
+        data: [
+            {% for real in reals %}
+                {{real}}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ],
+        backgroundColor: [
+            'rgba(99, 255, 132, 0.2)',
+            'rgba(162, 54, 235, 0.2)',
+            'rgba(206, 255, 86, 0.2)',
+            'rgba(192, 75, 192, 0.2)',
+            'rgba(102, 153, 255, 0.2)',
+            'rgba(159, 255, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(99, 255,132,1)',
+            'rgba(162, 54, 235, 1)',
+            'rgba(206, 255, 86, 1)',
+            'rgba(192, 75, 192, 1)',
+            'rgba(102, 153, 255, 1)',
+            'rgba(159, 255, 64, 1)'
+        ],
+        borderWidth: 1
+    }
+];
+
+var hiddener = $("#chart_{{name}}").parents('[style="display: none;"]');//
+
+$(hiddener).attrchange({
+    trackValues: true,
+    callback: function (event){
+        if (event.attributeName == "style" && event.newValue != "display: none;"&& event.newValue != ""){
+            var myChart = new Chart(window['ctx_{{name}}'], {
+                type: 'line',
+                data: {
+                    labels: [
+                        {% for a in actividades %}
+                            "{{a.nombre}}"{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ],
+                    datasets: window['dataset_{{name}}']
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
                 }
-            }]
+            });
         }
     }
 });
+    
 </script>

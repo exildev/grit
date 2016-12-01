@@ -53,7 +53,7 @@ class LinearWidget(forms.Widget):
     # end def
 
     class Media:
-        js = ('epc/js/chart.js',)
+        js = ('epc/js/chart.js','epc/js/noframework.waypoints.min.js', 'https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js')
     # end class
 
 # end class

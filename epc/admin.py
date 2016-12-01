@@ -1,6 +1,8 @@
 # -*- encoding: utf8 -*-
 from exileui.admin import exileui
-from exileui.admin import exileui, ExStacked, ExTabular, ExTab, DateRangeEX, DateRangeEX
+from exileui.admin import exileui, ExStacked, ExTabular, ExTab, DateRangeEX, DateRangeEX, ExGraph
+from django.contrib.admin.views.main import ChangeList
+from django.db.models import Sum, Avg
 from usr.models import Empleado as EmpleadoU
 from cuser.middleware import CuserMiddleware
 from django.contrib import admin
@@ -8,8 +10,40 @@ import nested_admin
 import models
 import forms
 
+class TotalAveragesChangeList(ChangeList):
+    #provide the list of fields that we need to calculate averages and totals
+    fields_to_total = ['amount', 'total_sum', 'paid_by_cash',
+                       'paid_by_transfer',]
+ 
+ 
+ 
+    def get_total_values(self, queryset):
+        """
+        Get the totals
+        """
+        #basically the total parameter is an empty instance of the given model
+        total = models.Actividad(nombre='total dias', dias_estimados=queryset.aggregate(dias_estimados=Sum('dias_estimados'))['dias_estimados'])
+        return total
 
-class GanttInline(ExTab):
+ 
+    def get_results(self, request):
+        """
+        The model admin gets queryset results from this method
+        and then displays it in the template
+        """
+        super(TotalAveragesChangeList, self).get_results(request)
+        #first get the totals from the current changelist
+        total = self.get_total_values(self.queryset)
+        #then get the averages
+        #small hack. in order to get the objects loaded we need to call for 
+        #queryset results once so simple len function does it
+        len(self.result_list)
+        #and finally we add our custom rows to the resulting changelist
+        self.result_list._result_cache.append(total)
+# end class
+
+
+class GanttInline(nested_admin.NestedStackedInline):
     model = models.Gantt
     form = forms.GanttForm
     extra = 0
@@ -59,6 +93,11 @@ class ActividadInline(ExTabular):
 class ActividadAdmin(admin.ModelAdmin):
     form = forms.ActividadForm
     readonly_fields = ['fecha_completado', 'desface']
+    list_display = ['nombre', 'dias_estimados']
+
+    def get_changelist(self, request, **kwargs):
+        return TotalAveragesChangeList
+    # end def
 # end class
 
 
@@ -70,7 +109,7 @@ class OrdenTrabajoAdmin(nested_admin.NestedModelAdmin):
 # end class
 
 
-class OrdenTrabajoInline(ExTab):
+class OrdenTrabajoInline(ExGraph):
     model = models.OrdenTrabajo
     # form = forms.OrdenTrabajoForm
     # readonly_fields = ['fecha_final_estimada', 'fecha_final_real', ]
