@@ -17,9 +17,6 @@ function drawChart() {
   data.addColumn('number', 'Duration');
   data.addColumn('number', 'Percent Complete');
   data.addColumn('string', 'Dependencies');
-  {%for p in ordenes %}
-    console.log('{{p.fecha_final_estimada}}', new Date('{{p.fecha_final_estimada|date:"Y-m-d"}}'));
-  {% endfor %}
 
   data.addRows([
     {%for p in ordenes %}

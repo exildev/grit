@@ -76,6 +76,7 @@
     function dismissAddRelatedObjectPopup(win, newId, newRepr) {
         var name = windowname_to_id(win.name);
         var elem = document.getElementById(name);
+        console.log(name, elem);
         if (elem) {
             var elemName = elem.nodeName.toUpperCase();
             if (elemName === 'SELECT') {
@@ -89,6 +90,7 @@
             }
             // Trigger a change event to update related links if required.
             $(elem).trigger('change');
+            console.log(name, elem);
         } else {
             var toId = name + "_to";
             var o = new Option(newRepr, newId);

@@ -20,6 +20,7 @@
 
 form .form-row p {
     padding-left: 0;
+    margin-top: -20px;
 }
 
 .hidden {
@@ -232,13 +233,13 @@ fieldset.monospace textarea {
 /* SUBMIT ROW */
 
 .submit-row {
-    padding: 12px 14px;
+    /*padding: 12px 14px;
     margin: 0 0 20px;
     background: #f8f8f8;
     border: 1px solid #eee;
     border-radius: 4px;
     text-align: right;
-    overflow: hidden;
+    overflow: hidden;*/
 }
 
 body.popup .submit-row {
@@ -274,6 +275,7 @@ body.popup .submit-row {
     height: 15px;
     line-height: 15px;
     color: #fff;
+    margin-right: 4px;
 }
 
 .submit-row a.deletelink:focus,

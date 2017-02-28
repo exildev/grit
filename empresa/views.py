@@ -122,7 +122,6 @@ def form_editar_departamento(request, departamento, form = None, form_jefes = No
 	if departamento:
 		if not form:
 			form = services.form_editar_departamento(request, departamento)
-			print departamento.pk
 		#ende if
 		if not form_jefes:
 			form_jefes = services.form_jefes(request, departamento.pk)
@@ -209,7 +208,6 @@ def form_editar_cargo(request, cargo, form = None, form_requisito = None, hecho 
 		if not form_requisito:
 			form_requisito = services.form_requisito(request, cargo)
 		#ende if
-		print form
 		return render(request, 'empresa/form_cargo.html', {'form': form, 'form_requisito': form_requisito, 'hecho': hecho})
 	#end if
 	raise Http404

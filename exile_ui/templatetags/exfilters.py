@@ -8,7 +8,6 @@ register = Library()
 
 @register.filter(name='is_exinline')
 def is_exinline(obj):
-    print type(obj.opts).__bases__
     bases = type(obj.opts).__bases__
     return ExTabular in bases or ExStacked in bases
 # end def

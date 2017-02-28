@@ -3,10 +3,18 @@ from django.contrib import admin
 import unicodedata
 import models
 import forms
+import nested_admin
 
-class CampoInline(admin.TabularInline):
+class CampoInline(nested_admin.NestedTabularInline):
 	model = models.Campo
 	form = forms.CampoForm
+	extra = 0
+# end class
+
+class GrupoInline(nested_admin.NestedStackedInline):
+	model = models.Grupo
+	inlines = [CampoInline]
+	extra = 1
 # end class
 
 class RevisionInline(admin.StackedInline):
@@ -15,13 +23,13 @@ class RevisionInline(admin.StackedInline):
 	extra = 1
 # end class
 
-class FormularioAdmin(admin.ModelAdmin):
+class FormularioAdmin(nested_admin.NestedModelAdmin):
 	search_fields = ('nombre', 'fecha')
 	list_filter = ('fecha', )
 	list_display = ('nombre', 'fecha')
 	model=models.Formulario
 	form = forms.FormularioForm
-	inlines = [CampoInline]
+	inlines = [GrupoInline]
 #end class
 
 class RegistroAdmin(admin.ModelAdmin):
@@ -44,10 +52,16 @@ class RegistroAdmin(admin.ModelAdmin):
 		#end if
 		return self.form
 	#end def
+
+	class Media:
+		js = ('formulario/js/agrupar.js', )
+	# end class
+
 #end class
 
 
 exileui.register(models.Tipo)
+exileui.register(models.Grupo)
 #exileui.register(models.Campo)
 exileui.register(models.Formulario, FormularioAdmin)
 #exileui.register(models.Valor)

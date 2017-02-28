@@ -72,7 +72,10 @@ class OrdenTrabajo(models.Model):
 
 	def fecha_final_estimada(self):
 		act = Actividad.objects.filter(orden = self).order_by('poscicion').last()
-		return act.fecha_estimada()
+		if act:
+			return act.fecha_estimada()
+		# end if
+		return None
 	# e nd def
 
 	def fecha_final_real(self):
@@ -83,7 +86,6 @@ class OrdenTrabajo(models.Model):
 	def completado(self):
 		acts = Actividad.objects.filter(orden = self)
 		if acts.filter(completado=True).count():
-			print acts.count(), acts.filter(completado=True).count()
 			return 100*acts.filter(completado=True).count()/acts.count()
 		# end if
 		return 0

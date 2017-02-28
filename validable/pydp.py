@@ -34,8 +34,6 @@ class PyDP:
 
 		match = ctypes.c_int(22)
 
-		print format1
-
 		resp = self.dpfj.dpfj_compare(format1, feat1, size1, 1, format2, feat2, size2, 1, ctypes.byref(match))
 		print "?", match.value, resp
 		return match.value < rate

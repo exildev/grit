@@ -76,7 +76,6 @@ class ActividadInline(ExTabular):
             empleado = EmpleadoU.objects.filter(
                 _empleado=obj.personal.empleado).first()
             if user.pk == empleado.pk:
-                print user, empleado
                 self.form = forms.ActividadUserForm
             # end if
         # end if
@@ -116,6 +115,10 @@ class OrdenTrabajoInline(ExGraph):
     inlines = [ActividadInline,
                AdquisiscionMaterialInline, ProgresoGraficoInline]
     extra = 0
+
+    def __init__(self, *args, **kwargs):
+        super(OrdenTrabajoInline, self).__init__(*args, **kwargs)
+    # end def
 # end class
 
 

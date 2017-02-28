@@ -13,6 +13,8 @@ class Tipo(models.Model):
 		(5, 'Fecha'  ),
 		(6, 'Hora'   ),
 		(7, 'Fecha/Hora'),
+		(8, 'Obciones'),
+		(9, 'Referencia'),
 	)
 	forma   = models.IntegerField(choices=FORMAS)
 	nombre  = models.CharField(max_length=45)
@@ -33,10 +35,22 @@ class Formulario(models.Model):
 	#en class
 #end class
 
+class Grupo(models.Model):
+	nombre = models.CharField(max_length=145)
+	formulario = models.ForeignKey(Formulario)
+
+# end class
+
 class Campo(models.Model):
+	VERS = (
+		('block', 'De arriba abajo'),
+		('inline', 'En la misma lina'),
+	)
 	nombre = models.CharField(max_length=45)
 	tipo   = models.ForeignKey(Tipo)
-	formulario = models.ForeignKey(Formulario)
+	grupo = models.ForeignKey(Grupo)
+	ver_como   = models.CharField(max_length=45, choices=VERS)
+
 
 	def __unicode__(self):
 		return u'%s' % (self.nombre, )
